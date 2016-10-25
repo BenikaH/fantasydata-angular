@@ -9,22 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var forms_1 = require('@angular/forms');
-var app_component_1 = require('./app.component');
-var optimized_component_1 = require('./optimized/optimized.component');
-var AppModule = (function () {
-    function AppModule() {
+var player_1 = require('../player');
+var OptimizedComponent = (function () {
+    function OptimizedComponent() {
     }
-    AppModule = __decorate([
-        core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule],
-            declarations: [app_component_1.AppComponent, optimized_component_1.OptimizedComponent],
-            bootstrap: [app_component_1.AppComponent]
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', player_1.Player)
+    ], OptimizedComponent.prototype, "player", void 0);
+    OptimizedComponent = __decorate([
+        core_1.Component({
+            selector: 'optimized',
+            template: "\n  <div *ngIf=\"player\">\n    <h2>{{player.name}} details!</h2>\n    <div><label>id: </label>{{player.name}}</div>\n    <div>\n      <label>name: </label>\n      <input [(ngModel)]=\"player.name\" placeholder=\"name\"/>\n    </div>\n  </div>\n"
         }), 
         __metadata('design:paramtypes', [])
-    ], AppModule);
-    return AppModule;
+    ], OptimizedComponent);
+    return OptimizedComponent;
 }());
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+exports.OptimizedComponent = OptimizedComponent;
+//# sourceMappingURL=optimized.component.js.map
