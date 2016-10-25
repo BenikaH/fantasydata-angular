@@ -1,45 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Player } from './player';
-
-const PLAYERS: Player[] = [
-  { 
-  	name: "Ryan Tannehill", 
-  	fantasyPosition: 'QB',
-  	fantasyPoints: 17.2, 
-  	team: "MIA"
-  },
-  { 
-  	name: "Adrian Peterson", 
-  	fantasyPosition: 'RB',
-  	fantasyPoints: 15.6, 
-  	team: "MIN"
-  },
-  { 
-  	name: "Antonio Brown", 
-  	fantasyPosition: 'WR',
-  	fantasyPoints: 17.7, 
-  	team: "PIT"
-  },
-  { 
-  	name: "Rob Gronkowski", 
-  	fantasyPosition: 'TE', 
-  	fantasyPoints: 14, 
-  	team: "NE"
-  },
-  { 
-  	name: "Seattle D/ST", 
-  	fantasyPosition: 'D/ST',
-  	fantasyPoints: 9.9, 
-  	team: "SEA"
-  },
-  { 
-  	name: "Matt Bryant", 
-  	fantasyPosition: 'K', 
-  	fantasyPoints: 8.4, 
-  	team: "ATL"
-  }
-];
+import { PlayersService } from './players.service';
 
 	@Component({
 	  selector: 'my-app',
@@ -104,16 +66,29 @@ const PLAYERS: Player[] = [
 		    margin-right: .8em;
 		    border-radius: 4px 0 0 4px;
 		  }
-		`]
+		`],
+		providers: [PlayersService]
+
 	})
 
-export class AppComponent {
-  title = 'Fantasy Data Capstone';
-  players = PLAYERS;
-  selectedPlayer = Player;
+export class AppComponent implements OnInit {
+	title = 'Fantasy Data Capstone';
+	players: Player[];
+	selectedPlayer: Player;
 
-  onSelect(player: Player): void {
-  	this.selectedPlayer = Player;
-  }
+
+	constructor(private playersService: PlayersService) { }
+
+	getPlayers(): void {
+		this.playersService.getPlayers().then(players => this.players = players);
+	}
+
+	ngOnInit(): void {
+		this.getPlayers();
+	}
+
+	onSelect(hero: Hero): void {
+		this.selectedPlayer = hero;
+	}
 }
 
