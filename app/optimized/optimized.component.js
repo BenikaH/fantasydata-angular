@@ -9,20 +9,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var player_1 = require('../player');
+var router_1 = require('@angular/router');
+var common_1 = require('@angular/common');
+var players_service_1 = require('../players.service');
 var OptimizedComponent = (function () {
-    function OptimizedComponent() {
+    function OptimizedComponent(PlayersService, route, location) {
+        this.PlayersService = PlayersService;
+        this.route = route;
+        this.location = location;
     }
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', player_1.Player)
-    ], OptimizedComponent.prototype, "player", void 0);
+    OptimizedComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.params.forEach(function (params) {
+            _this.PlayersService.getPlayer(name)
+                .then(function (player) { return _this.player = player; });
+        });
+    };
+    OptimizedComponent.prototype.goBack = function () {
+        this.location.back();
+    };
     OptimizedComponent = __decorate([
         core_1.Component({
+            moduleId: module.id,
             selector: 'optimized',
-            template: "\n  <div *ngIf=\"player\">\n    <h2>{{player.name}} details!</h2>\n    <div><label>id: </label>{{player.name}}</div>\n    <div>\n      <label>name: </label>\n      <input [(ngModel)]=\"player.name\" placeholder=\"name\"/>\n    </div>\n  </div>\n"
+            templateUrl: 'optimized.component.html',
+            styleUrls: ['optimized.component.css']
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [players_service_1.PlayersService, router_1.ActivatedRoute, common_1.Location])
     ], OptimizedComponent);
     return OptimizedComponent;
 }());

@@ -9,20 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
-        this.title = 'Fantasy Data Capstone';
+var router_1 = require('@angular/router');
+var dashboard_component_1 = require('./dashboard/dashboard.component');
+var optimized_component_1 = require('./optimized/optimized.component');
+var routes = [
+    { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+    { path: 'dashboard', component: dashboard_component_1.DashboardComponent },
+    { path: 'optimized', component: optimized_component_1.OptimizedComponent },
+];
+var AppRoutingModule = (function () {
+    function AppRoutingModule() {
     }
-    AppComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'my-app',
-            template: "\n\t\t    <h1>{{title}}</h1>\n\t\t    <nav>\n\t\t      <a routerLink=\"/dashboard\" routerLinkActive=\"active\">Dashboard</a>\n\t\t      <a routerLink=\"/heroes\" routerLinkActive=\"active\">Players</a>\n\t\t    </nav>\n\t\t    <router-outlet></router-outlet>\n\t\t",
-            styleUrls: ['app.component.css']
+    AppRoutingModule = __decorate([
+        core_1.NgModule({
+            imports: [router_1.RouterModule.forRoot(routes)],
+            exports: [router_1.RouterModule]
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], AppRoutingModule);
+    return AppRoutingModule;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.AppRoutingModule = AppRoutingModule;
+//# sourceMappingURL=app-routing.module.js.map

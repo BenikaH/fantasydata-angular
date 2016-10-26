@@ -8,13 +8,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
 var mock_players_1 = require('./mock-players');
+var core_1 = require('@angular/core');
 var PlayersService = (function () {
     function PlayersService() {
     }
     PlayersService.prototype.getPlayers = function () {
         return Promise.resolve(mock_players_1.PLAYERS);
+    };
+    PlayersService.prototype.getPlayersSlowly = function () {
+        var _this = this;
+        return new Promise(function (resolve) {
+            return setTimeout(resolve, 2000);
+        }) // delay 2 secs
+            .then(function () { return _this.getPlayers(); });
+    };
+    PlayersService.prototype.getPlayer = function (name) {
+        return this.getPlayers()
+            .then(function (players) { return players.find(function (player) { return player.name === name; }); });
     };
     PlayersService = __decorate([
         core_1.Injectable(), 
