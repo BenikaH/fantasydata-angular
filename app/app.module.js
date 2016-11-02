@@ -14,6 +14,7 @@ var forms_1 = require('@angular/forms');
 var app_component_1 = require('./app.component');
 var dashboard_component_1 = require('./dashboard/dashboard.component');
 var optimized_component_1 = require('./optimized/optimized.component');
+var roster_component_1 = require('./roster/roster.component');
 var players_service_1 = require('./players.service');
 var app_routing_module_1 = require('./app-routing.module');
 var AppModule = (function () {
@@ -22,7 +23,7 @@ var AppModule = (function () {
     AppModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, app_routing_module_1.AppRoutingModule],
-            declarations: [app_component_1.AppComponent, dashboard_component_1.DashboardComponent, optimized_component_1.OptimizedComponent],
+            declarations: [app_component_1.AppComponent, dashboard_component_1.DashboardComponent, optimized_component_1.OptimizedComponent, roster_component_1.RosterComponent],
             providers: [players_service_1.PlayersService],
             bootstrap: [app_component_1.AppComponent]
         }), 

@@ -4,3 +4,8 @@ export class Player {
 	fantasyPoints: number;
 	team: string;
 }
+/*
+export class Position {
+	position: string;
+}
+*/

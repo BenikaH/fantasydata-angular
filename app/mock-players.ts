@@ -1,4 +1,5 @@
 import { Player } from './player';
+//import { Position } from './player';
 
 export const PLAYERS: Player[] = [
   { 
@@ -38,3 +39,36 @@ export const PLAYERS: Player[] = [
   	team: "ATL"
   }
 ];
+
+//export const POSITIONS: Position[] = ["QB", "RB", "WR", "TE", "FLEX", "BN"];
+/*
+QB: 2 
+RB: 2
+WR: 3
+TE: 1
+FLEX: 1
+BN: 5
+
+var team = {
+  QB: {
+    max: 2,
+    players:[{
+      name:"Adam"
+    }]
+  },
+  RB: {
+    max: 3,
+    players:[{
+      name:"Dave"
+    }]
+  }
+}
+
+var structure = {
+  QB:2,
+  RB:2,
+  WR:3
+}
+
+]
+*/

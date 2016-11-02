@@ -12,10 +12,12 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var dashboard_component_1 = require('./dashboard/dashboard.component');
 var optimized_component_1 = require('./optimized/optimized.component');
+var roster_component_1 = require('./roster/roster.component');
 var routes = [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     { path: 'dashboard', component: dashboard_component_1.DashboardComponent },
     { path: 'optimized', component: optimized_component_1.OptimizedComponent },
+    { path: 'roster', component: roster_component_1.RosterComponent }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {

@@ -19,4 +19,27 @@ export class PlayersService {
 		return this.getPlayers()
 			.then(players => players.find(player => player.name === name));
 	}
+
+	PositionArr = ["QB", "RB"];
+
+	Positions = {
+		"QB":0,
+		"RB":0,
+		"WR":0,
+		"TE":0,
+		"FLEX":0,
+		"DST":0,
+		"K":0,
+		"BN":0
+	}
+
+	setPosition(position:string, number) {
+		this.Positions[position] = number;
+		console.log(number);
+	}
+
+	//returns position value from dropdown 
+	getTotalPosition(position) {
+		return this.Positions[position];
+	} 
 }

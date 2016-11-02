@@ -5,4 +5,9 @@ var Player = (function () {
     return Player;
 }());
 exports.Player = Player;
+/*
+export class Position {
+    position: string;
+}
+*/ 
 //# sourceMappingURL=player.js.map

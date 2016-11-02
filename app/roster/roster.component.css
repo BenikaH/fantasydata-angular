@@ -35,6 +35,7 @@
     .content-block {
         border:1px solid #d7dde1;
         border-radius:5px;
+        width:40%;
         background-color:#FFFFFF;
     }
     .content-block h2 {
@@ -81,6 +82,7 @@
         display:flex;
         justify-content:center;
         align-items:center;
+        padding:3em 0;
     }
     .btn {
         -moz-box-shadow: 2px 15px 16px -8px #276873;

@@ -16,16 +16,19 @@ var DashboardComponent = (function () {
         this.router = router;
         this.playersService = playersService;
         this.players = [];
+        this.positionArr = ["QB", "RB", "WR", "TE"];
     }
     DashboardComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.playersService.getPlayers()
             .then(function (players) { return _this.players = players.slice(1, 5); });
     };
-    //	take a look at this
     DashboardComponent.prototype.gotoDetail = function (player) {
         var link = ['/dashboard', player.name];
         this.router.navigate(link);
+    };
+    DashboardComponent.prototype.onChange = function (event, position, value) {
+        this.playersService.setPosition(position, value);
     };
     DashboardComponent = __decorate([
         core_1.Component({

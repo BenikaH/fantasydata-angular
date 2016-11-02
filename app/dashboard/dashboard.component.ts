@@ -15,6 +15,8 @@ export class DashboardComponent implements OnInit {
 
   players: Player[] = [];
 
+  public positionArr = ["QB", "RB", "WR", "TE"];
+
   constructor(
     private router: Router,
     private playersService: PlayersService) {}
@@ -23,9 +25,13 @@ export class DashboardComponent implements OnInit {
     this.playersService.getPlayers()
       .then(players => this.players = players.slice(1, 5));
   }
-//	take a look at this
+
   gotoDetail(player: Player): void {
     let link = ['/dashboard', player.name];
     this.router.navigate(link);
+  }
+
+  onChange(event, position, value) {
+  this.playersService.setPosition(position, value);
   }
 }
