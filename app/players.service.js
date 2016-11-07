@@ -8,20 +8,68 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var player_1 = require('./player');
 var mock_players_1 = require('./mock-players');
 var core_1 = require('@angular/core');
 var PlayersService = (function () {
     function PlayersService() {
-        this.PositionArr = ["QB", "RB"];
         this.Positions = {
-            "QB": 0,
-            "RB": 0,
-            "WR": 0,
-            "TE": 0,
-            "FLEX": 0,
-            "DST": 0,
-            "K": 0,
-            "BN": 0
+            "QB": 1,
+            "RB": 1,
+            "WR": 1,
+            "TE": 1,
+            "FLEX": 1,
+            "DST": 1,
+            "K": 1,
+            "BN": 1,
+            "playersQB": [{
+                    name: 'Ryan Tannehill',
+                    fantasyPosition: 'QB',
+                    fantasyPoints: 10,
+                    team: "MIA"
+                }],
+            "playersRB": [{
+                    name: 'Jay Ajayi',
+                    fantasyPosition: 'RB',
+                    fantasyPoints: 12,
+                    team: "MIA"
+                }],
+            "playersWR": [{
+                    name: 'Jay Ajayi',
+                    fantasyPosition: 'RB',
+                    fantasyPoints: 12,
+                    team: "MIA"
+                }],
+            "playersTE": [{
+                    name: 'Jay Ajayi',
+                    fantasyPosition: 'RB',
+                    fantasyPoints: 12,
+                    team: "MIA"
+                }],
+            "playersFLEX": [{
+                    name: 'Jay Ajayi',
+                    fantasyPosition: 'RB',
+                    fantasyPoints: 12,
+                    team: "MIA"
+                }],
+            "playersK": [{
+                    name: 'Jay Ajayi',
+                    fantasyPosition: 'RB',
+                    fantasyPoints: 12,
+                    team: "MIA"
+                }],
+            "playersDST": [{
+                    name: 'Jay Ajayi',
+                    fantasyPosition: 'RB',
+                    fantasyPoints: 12,
+                    team: "MIA"
+                }],
+            "playersBN": [{
+                    name: 'M',
+                    fantasyPosition: 'RB',
+                    fantasyPoints: 12,
+                    team: "MIA"
+                }]
         };
     }
     PlayersService.prototype.getPlayers = function () {
@@ -38,13 +86,21 @@ var PlayersService = (function () {
         return this.getPlayers()
             .then(function (players) { return players.find(function (player) { return player.name === name; }); });
     };
+    PlayersService.prototype.searchPlayers = function (name) {
+        return this.getPlayers()
+            .then(function (players) { return players.filter(function (player) { return player.name.startsWith(name); }); });
+    };
     PlayersService.prototype.setPosition = function (position, number) {
         this.Positions[position] = number;
-        console.log(number);
+        this.Positions.playersQB.push(new player_1.Player(position));
     };
     //returns position value from dropdown 
     PlayersService.prototype.getTotalPosition = function (position) {
         return this.Positions[position];
+        //console.log(this.Positions[position]);
+    };
+    PlayersService.prototype.getAllPositions = function () {
+        return this.Positions;
     };
     PlayersService = __decorate([
         core_1.Injectable(), 

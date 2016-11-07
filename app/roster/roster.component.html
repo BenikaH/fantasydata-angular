@@ -1,21 +1,15 @@
 <div class="lineup">
-    <div><span>QB</span><input type="text" placeholder="Add Player"></div>
-    <div><span>RB</span><input type="text" placeholder="Add Player"></div>
-    <div><span>RB</span><input type="text" placeholder="Add Player"></div>
-    <div><span>WR</span><input type="text" placeholder="Add Player"></div>
-    <div><span>WR</span><input type="text" placeholder="Add Player"></div>
-    <div><span>WR</span><input type="text" placeholder="Add Player"></div>
-    <div><span>TE</span><input type="text" placeholder="Add Player"></div>
-    <div><span>FLEX</span><input type="text" placeholder="Add Player"></div>
-    <div><span>DST</span><input type="text" placeholder="Add Player"></div>
-    <div><span>BN</span><input type="text" placeholder="Add Player"></div>
-    <div><span>BN</span><input type="text" placeholder="Add Player"></div>
-    <div><span>BN</span><input type="text" placeholder="Add Player"></div>
-    <div><span>BN</span><input type="text" placeholder="Add Player"></div>
-    <div><span>BN</span><input type="text" placeholder="Add Player"></div>
-    <div><span>BN</span><input type="text" placeholder="Add Player"></div>  
+    <!--Here you can put as many player components as you wish.-->
+	<player *ngFor="let player of positions.playersQB" (position)="player.fantasyPosition"></player>
+    <player *ngFor="let player of positions.playersRB" (position)="player.fantasyPosition"></player>
+    <player *ngFor="let player of positions.playersWR" (position)="player.fantasyPosition"></player>
+    <player *ngFor="let player of positions.playersTE" (position)="player.fantasyPosition"></player>
+    <player *ngFor="let player of positions.playersFLEX" (position)="player.fantasyPosition"></player>
+    <player *ngFor="let player of positions.playersK" (position)="player.fantasyPosition"></player>
+    <player *ngFor="let player of positions.playersDST" (position)="player.fantasyPosition"></player>
+    <player *ngFor="let player of positions.playersBN" (position)="player.fantasyPosition"></player>
 
-    <div class="btn-container">	
+    <div class="btn-container"> 
         <a routerLink="/dashboard" class="btn">Dashboard</a>
         <a routerLink="/optimized" class="btn">Optimize</a>
     </div>

@@ -20,26 +20,82 @@ export class PlayersService {
 			.then(players => players.find(player => player.name === name));
 	}
 
-	PositionArr = ["QB", "RB"];
+	searchPlayers(name:string): Promise<Player[]> {
+		return this.getPlayers()
+			.then(players => players.filter(player => player.name.startsWith(name)));
+	}
 
 	Positions = {
-		"QB":0,
-		"RB":0,
-		"WR":0,
-		"TE":0,
-		"FLEX":0,
-		"DST":0,
-		"K":0,
-		"BN":0
+		"QB":1,
+		"RB":1,
+		"WR":1,
+		"TE":1,
+		"FLEX":1,
+		"DST":1,
+		"K":1,
+		"BN":1,
+		"playersQB":[{
+			name:'Ryan Tannehill',
+			fantasyPosition:'QB',
+			fantasyPoints:10,
+			team:"MIA"
+		 }],
+		 "playersRB":[{
+			name:'Jay Ajayi',
+			fantasyPosition:'RB',
+			fantasyPoints:12,
+			team:"MIA"
+		 }],
+		"playersWR":[{
+			name:'Jay Ajayi',
+			fantasyPosition:'RB',
+			fantasyPoints:12,
+			team:"MIA"
+		}],
+		"playersTE":[{
+			name:'Jay Ajayi',
+			fantasyPosition:'RB',
+			fantasyPoints:12,
+			team:"MIA"
+		}],
+		"playersFLEX":[{
+			name:'Jay Ajayi',
+			fantasyPosition:'RB',
+			fantasyPoints:12,
+			team:"MIA"
+		}],
+		"playersK":[{
+			name:'Jay Ajayi',
+			fantasyPosition:'RB',
+			fantasyPoints:12,
+			team:"MIA"
+		}],
+		"playersDST":[{
+			name:'Jay Ajayi',
+			fantasyPosition:'RB',
+			fantasyPoints:12,
+			team:"MIA"
+		}],
+		"playersBN":[{
+			name:'M',
+			fantasyPosition:'RB',
+			fantasyPoints:12,
+			team:"MIA"
+		}]
 	}
 
 	setPosition(position:string, number) {
 		this.Positions[position] = number;
-		console.log(number);
+		this.Positions.playersQB.push(new Player(position));
 	}
 
 	//returns position value from dropdown 
 	getTotalPosition(position) {
 		return this.Positions[position];
-	} 
+		//console.log(this.Positions[position]);
+	}
+
+	getAllPositions(){
+		return this.Positions;
+	}
 }

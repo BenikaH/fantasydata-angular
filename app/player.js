@@ -1,13 +1,9 @@
 "use strict";
 var Player = (function () {
-    function Player() {
+    function Player(position) {
+        this.fantasyPosition = position;
     }
     return Player;
 }());
 exports.Player = Player;
-/*
-export class Position {
-    position: string;
-}
-*/ 
 //# sourceMappingURL=player.js.map

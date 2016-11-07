@@ -16,7 +16,6 @@ var DashboardComponent = (function () {
         this.router = router;
         this.playersService = playersService;
         this.players = [];
-        this.positionArr = ["QB", "RB", "WR", "TE"];
     }
     DashboardComponent.prototype.ngOnInit = function () {
         var _this = this;

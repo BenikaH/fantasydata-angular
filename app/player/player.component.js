@@ -9,36 +9,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var common_1 = require('@angular/common');
 var players_service_1 = require('../players.service');
-var RosterComponent = (function () {
-    function RosterComponent(PlayersService, route, location) {
+var PlayerComponent = (function () {
+    function PlayerComponent(PlayersService) {
         this.PlayersService = PlayersService;
-        this.route = route;
-        this.location = location;
     }
-    RosterComponent.prototype.ngOnInit = function () {
-        this.positions = this.PlayersService.getAllPositions();
+    PlayerComponent.prototype.ngOnInit = function () {
     };
-    RosterComponent.prototype.goBack = function () {
-        this.location.back();
+    /**
+     * You have to do something more interesting with this results
+     *
+     */
+    PlayerComponent.prototype.searchPlayer = function () {
+        this.PlayersService.searchPlayers(this.player)
+            .then(function (players) { return console.log(players); });
     };
-    RosterComponent = __decorate([
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], PlayerComponent.prototype, "position", void 0);
+    PlayerComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'roster',
-            templateUrl: 'roster.component.html',
-            styleUrls: ['roster.component.css']
+            selector: 'player',
+            templateUrl: 'player.component.html',
+            styleUrls: ['player.component.css']
         }), 
-        __metadata('design:paramtypes', [players_service_1.PlayersService, router_1.ActivatedRoute, common_1.Location])
-    ], RosterComponent);
-    return RosterComponent;
+        __metadata('design:paramtypes', [players_service_1.PlayersService])
+    ], PlayerComponent);
+    return PlayerComponent;
 }());
-exports.RosterComponent = RosterComponent;
-/* same as (player => this.player = player);
-function(player) {
-  this.players = player
-}
-*/ 
-//# sourceMappingURL=roster.component.js.map
+exports.PlayerComponent = PlayerComponent;
+//# sourceMappingURL=player.component.js.map

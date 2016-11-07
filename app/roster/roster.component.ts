@@ -13,22 +13,24 @@ import { PlayersService } from '../players.service';
 })
 
 export class RosterComponent implements OnInit {
-  player: Player;
+  positions;
 
   constructor(
     private PlayersService: PlayersService,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
   ){}
 
   ngOnInit(): void {
-    this.route.params.forEach((params: Params) => {
-      this.PlayersService.getPlayer(name)
-        .then(player => this.player = player);
-    });
+    this.positions = this.PlayersService.getAllPositions();
   }
 
   goBack(): void {
     this.location.back();
   }
 }
+/* same as (player => this.player = player); 
+function(player) {
+  this.players = player
+}
+*/

@@ -1,1 +1,1 @@
-{"version":3,"file":"player.js","sourceRoot":"","sources":["player.ts"],"names":[],"mappings":";AAAA;IAAA;IAKA,CAAC;IAAD,aAAC;AAAD,CAAC,AALD,IAKC;AALY,cAAM,SAKlB,CAAA;AACD;;;;EAIE"}
+{"version":3,"file":"player.js","sourceRoot":"","sources":["player.ts"],"names":[],"mappings":";AAAA;IAMC,gBAAY,QAAQ;QACnB,IAAI,CAAC,eAAe,GAAG,QAAQ,CAAC;IACjC,CAAC;IACF,aAAC;AAAD,CAAC,AATD,IASC;AATY,cAAM,SASlB,CAAA"}

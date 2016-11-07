@@ -15,8 +15,6 @@ export class DashboardComponent implements OnInit {
 
   players: Player[] = [];
 
-  public positionArr = ["QB", "RB", "WR", "TE"];
-
   constructor(
     private router: Router,
     private playersService: PlayersService) {}

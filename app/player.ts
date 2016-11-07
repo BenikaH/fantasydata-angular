@@ -3,9 +3,8 @@ export class Player {
 	fantasyPosition: string;
 	fantasyPoints: number;
 	team: string;
+
+	constructor(position){
+		this.fantasyPosition = position;
+	}
 }
-/*
-export class Position {
-	position: string;
-}
-*/
