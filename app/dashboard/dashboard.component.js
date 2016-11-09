@@ -22,10 +22,6 @@ var DashboardComponent = (function () {
         this.playersService.getPlayers()
             .then(function (players) { return _this.players = players.slice(1, 5); });
     };
-    DashboardComponent.prototype.gotoDetail = function (player) {
-        var link = ['/dashboard', player.name];
-        this.router.navigate(link);
-    };
     DashboardComponent.prototype.onChange = function (event, position, value) {
         this.playersService.setPosition(position, value);
     };

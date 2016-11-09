@@ -24,11 +24,6 @@ export class DashboardComponent implements OnInit {
       .then(players => this.players = players.slice(1, 5));
   }
 
-  gotoDetail(player: Player): void {
-    let link = ['/dashboard', player.name];
-    this.router.navigate(link);
-  }
-
   onChange(event, position, value) {
   this.playersService.setPosition(position, value);
   }

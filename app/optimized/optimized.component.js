@@ -24,6 +24,7 @@ var OptimizedComponent = (function () {
             _this.PlayersService.getPlayer(name)
                 .then(function (player) { return _this.player = player; });
         });
+        //this.positions = this.PlayersService.getAllPositions();
     };
     OptimizedComponent.prototype.goBack = function () {
         this.location.back();

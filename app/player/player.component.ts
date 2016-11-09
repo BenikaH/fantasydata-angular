@@ -21,6 +21,8 @@ export class PlayerComponent implements OnInit {
      * that was selected rather than just the name
      */
     player;
+    players:Player[] = [];
+    playerName:string;
 
     constructor(
         private PlayersService: PlayersService
@@ -29,13 +31,14 @@ export class PlayerComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    /**
-     * You have to do something more interesting with this results
-     *
-     */
     searchPlayer(){
-        this.PlayersService.searchPlayers(this.player)
-            .then(players => console.log(players));
+        this.PlayersService.searchPlayers(this.playerName, this.position)
+            .then(players => this.players = players);
     }
 
+    select(p) {
+        this.player = p;
+        this.players = [];
+        this.playerName = p.name;
+    }
 }

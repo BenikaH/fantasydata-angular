@@ -14,6 +14,7 @@ import { PlayersService } from '../players.service'
 
 export class OptimizedComponent implements OnInit {
   player: Player;
+  position;
 
   constructor(
     private PlayersService: PlayersService,
@@ -26,6 +27,7 @@ export class OptimizedComponent implements OnInit {
       this.PlayersService.getPlayer(name)
         .then(player => this.player = player);
     });
+    //this.positions = this.PlayersService.getAllPositions();
   }
 
   goBack(): void {

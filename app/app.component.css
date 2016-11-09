@@ -11,12 +11,10 @@ body {
 #banner {
     height: 5em;
     width: 100%;
-    border-bottom: 1px solid black;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size:1.75em;
-    border-bottom:3px double #d7dde1;
     background-color:ghostwhite;
 }
 #banner h1 {
@@ -30,7 +28,9 @@ body {
     align-items:center;
     justify-content:center;
     background-color:#F0F3F8;
-    padding:1.25em 0;
+    padding:3.5em 0;
+    border-top:3px double #d7dde1;
+    border-bottom:3px double #d7dde1;
 }
 .content-block {
     border:1px solid #d7dde1;
@@ -44,3 +44,4 @@ body {
     font-size:2.5em;
     color:midnightblue;
 }
+

@@ -1,32 +1,3 @@
-    html {
-        background-color: #F8F8FF;
-    }
-
-    .lineup-test, .league-settings {
-        display:flex;
-        flex-direction:column;
-        height:520px;
-    }
-    .lineup-test div {
-        width:100%;
-        border-top:1px solid #D7DDE1;
-        border-bottom:1px solid #D7DDE1;
-        align-items:center;
-        height:2em;
-    }
-    .lineup-test span {
-        margin-left:1em;
-        width:7%;
-        font-size:1.2em;
-    }
-    .lineup-test input {
-        height:2em;
-        width:91%;
-        border-top: none;
-        border-left: none;
-        border-right: none;
-    }
-
     .btn-container {
         border:none!important;
         display:flex;

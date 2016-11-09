@@ -1,16 +1,233 @@
 <div class="lineup">
     <!--Here you can put as many player components as you wish.-->
-	<player *ngFor="let player of positions.playersQB" (position)="player.fantasyPosition"></player>
-    <player *ngFor="let player of positions.playersRB" (position)="player.fantasyPosition"></player>
-    <player *ngFor="let player of positions.playersWR" (position)="player.fantasyPosition"></player>
-    <player *ngFor="let player of positions.playersTE" (position)="player.fantasyPosition"></player>
-    <player *ngFor="let player of positions.playersFLEX" (position)="player.fantasyPosition"></player>
-    <player *ngFor="let player of positions.playersK" (position)="player.fantasyPosition"></player>
-    <player *ngFor="let player of positions.playersDST" (position)="player.fantasyPosition"></player>
-    <player *ngFor="let player of positions.playersBN" (position)="player.fantasyPosition"></player>
+<!-- <p *ngIf="positions.QB == 1">
+        <player><span>QB</span></player>
+        <player></player>
+    </p>
+<div *ngIf="positions.QB ==1">
+        <div>QB</div>
+    </div>
+    <div *ngIf="positions.QB ==2">
+        <div>QB</div><div>QB</div>
+    </div>
+    
+
+    <div *ngIf="positions.RB ==1">
+        <div>RB</div>
+    </div>
+    <div *ngIf="positions.RB ==2">
+        <div>RB</div><div>RB</div>
+    </div>
+    <div *ngIf="positions.RB ==3">
+        <div>RB</div><div>RB</div><div>RB</div>
+    </div>
+-->
+	<player *ngFor="let player of positions.playersQB" [position]="player.fantasyPosition"></player>
+    <player *ngFor="let player of positions.playersRB" [position]="player.fantasyPosition"></player>
+    <player *ngFor="let player of positions.playersWR" [position]="player.fantasyPosition"></player>
+    <player *ngFor="let player of positions.playersTE" [position]="player.fantasyPosition"></player>
+    <player *ngFor="let player of positions.playersFLEX" [position]="player.fantasyPosition"></player>
+    <player *ngFor="let player of positions.playersK" [position]="player.fantasyPosition"></player>
+    <player *ngFor="let player of positions.playersDST" [position]="player.fantasyPosition"></player>
+    <player *ngFor="let player of positions.playersBN" [position]="player.fantasyPosition"></player>
+    {{positions.QB}}
 
     <div class="btn-container"> 
         <a routerLink="/dashboard" class="btn">Dashboard</a>
         <a routerLink="/optimized" class="btn">Optimize</a>
     </div>
 </div>
+<!-- 
+        "playersQB":[{
+            name:'Ryan Tannehill',
+            fantasyPosition:'QB',
+            fantasyPoints:15.5,
+            team:"MIA"
+         }/*,
+         {
+            name:'Aaron Rodgers',
+            fantasyPosition:'QB',
+            fantasyPoints:20.1,
+            team:"GB"
+         },
+         {
+            name:'Eli Manning',
+            fantasyPosition:'QB',
+            fantasyPoints:16.1,
+            team:"NYG"
+         },
+         {
+            name:'Tom Brady',
+            fantasyPosition:'QB',
+            fantasyPoints:21.3,
+            team:"NE"
+         }*/],
+         "playersRB":[{
+            name:'Jay Ajayi',
+            fantasyPosition:'RB',
+            fantasyPoints:12,
+            team:"MIA"
+        }, 
+        {
+            name:'Ezekiel Elliott',
+            fantasyPosition:'RB',
+            fantasyPoints:16.5,
+            team:"DAL"
+        }/*,
+        {
+            name:'LeVeon Bell',
+            fantasyPosition:'RB',
+            fantasyPoints:17.2,
+            team:"PIT"
+        },
+        {
+            name:'Demarco Murray',
+            fantasyPosition:'RB',
+            fantasyPoints:14.9,
+            team:"TEN"          
+        }*/],
+        "playersWR":[{
+            name:'Brandon Marshall',
+            fantasyPosition:'WR',
+            fantasyPoints:10.8,
+            team:"NYJ"
+        },
+        {
+            name:'Allen Robinson',
+            fantasyPosition:'WR',
+            fantasyPoints:12,
+            team:"JAX"
+        },
+        {
+            name:'Antonio Brown',
+            fantasyPosition:'WR',
+            fantasyPoints:16.3,
+            team:"PIT"
+        }/*,
+        {
+            name:'Julio Jones',
+            fantasyPosition:'WR',
+            fantasyPoints:12,
+            team:"ATL"          
+        }*/],
+        "playersTE":[{
+            name:'Jason Witten',
+            fantasyPosition:'TE',
+            fantasyPoints:8.3,
+            team:"DAL"
+        },
+        {
+            name:'Travis Kelce',
+            fantasyPosition:'TE',
+            fantasyPoints:9,
+            team:"KC"
+        },
+        {
+            name:'Delanie Walker',
+            fantasyPosition:'TE',
+            fantasyPoints:8.6,
+            team:"TEN"
+        },
+        {
+            name:'Tyler Eifert',
+            fantasyPosition:'TE',
+            fantasyPoints:8.9,
+            team:"CIN"          
+        }],
+        "playersFLEX":[{
+            name:'Mark Ingram',
+            fantasyPosition:'FLEX',
+            fantasyPoints:7.5,
+            team:"NO"
+        }/*,
+        {
+            name:'Melvin Gordon',
+            fantasyPosition:'FLEX',
+            fantasyPoints:13.2,
+            team:"SD"
+        },
+        {
+            name:'Jeremy Maclin',
+            fantasyPosition:'FLEX',
+            fantasyPoints:7.5,
+            team:"KC"
+        },
+        {
+            name:'Doug Baldwin',
+            fantasyPosition:'FLEX',
+            fantasyPoints:8,
+            team:"SEA"
+        }*/],
+        "playersK":[{
+            name:'Dan Bailey',
+            fantasyPosition:'K',
+            fantasyPoints:9,
+            team:"DAL"
+        }/*,
+        {
+            name:'Dan Carpenter',
+            fantasyPosition:'K',
+            fantasyPoints:8.9,
+            team:"BUF"
+        },
+        {
+            name:'Adam Vinateri',
+            fantasyPosition:'K',
+            fantasyPoints:9.5,
+            team:"IND"
+        },
+        {
+            name:'Cairo Santos',
+            fantasyPosition:'K',
+            fantasyPoints:7.5,
+            team:"KC"
+        }*/],
+        "playersDST":[{
+            name:'Miami DST',
+            fantasyPosition:'DST',
+            fantasyPoints:6.1,
+            team:"MIA"
+        }/*,
+        {
+            name:'Pittsburgh DST',
+            fantasyPosition:'DST',
+            fantasyPoints:6.5,
+            team:"PIT"
+        },
+        {
+            name:'Oakland DST',
+            fantasyPosition:'DST',
+            fantasyPoints:5.9,
+            team:"OAK"
+        },
+        {
+            name:'Vikings DST',
+            fantasyPosition:'DST',
+            fantasyPoints:10,
+            team:"MIN"
+        }*/],
+        "playersBN":[{
+            name:'Jarvis Landry',
+            fantasyPosition:'BN',
+            fantasyPoints:7,
+            team:"MIA"
+        },
+        {
+            name:'Mike Wallace',
+            fantasyPosition:'BN',
+            fantasyPoints:6.3,
+            team:"BAL"
+        },
+        {
+            name:'Derrick Henry',
+            fantasyPosition:'BN',
+            fantasyPoints:4.9,
+            team:"TEN"
+        },
+        {
+            name:'Blake Bortles',
+            fantasyPosition:'BN',
+            fantasyPoints:16.7,
+            team:"JAX"      
+        }]
+    } -->

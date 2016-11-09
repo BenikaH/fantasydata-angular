@@ -13,16 +13,19 @@ var players_service_1 = require('../players.service');
 var PlayerComponent = (function () {
     function PlayerComponent(PlayersService) {
         this.PlayersService = PlayersService;
+        this.players = [];
     }
     PlayerComponent.prototype.ngOnInit = function () {
     };
-    /**
-     * You have to do something more interesting with this results
-     *
-     */
     PlayerComponent.prototype.searchPlayer = function () {
-        this.PlayersService.searchPlayers(this.player)
-            .then(function (players) { return console.log(players); });
+        var _this = this;
+        this.PlayersService.searchPlayers(this.playerName, this.position)
+            .then(function (players) { return _this.players = players; });
+    };
+    PlayerComponent.prototype.select = function (p) {
+        this.player = p;
+        this.players = [];
+        this.playerName = p.name;
     };
     __decorate([
         core_1.Input(), 

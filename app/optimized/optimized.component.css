@@ -46,7 +46,6 @@
     .lineup, .league-settings {
         display:flex;
         flex-direction:column;
-        height:520px;
     }
     .lineup div {
         width:100%;

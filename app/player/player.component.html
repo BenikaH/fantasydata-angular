@@ -1,6 +1,15 @@
 <div class="lineup">
 	<div>
-	    <span>{{position}}</span>
-	    <input type="text" [(ngModel)]="player" (keydown)="searchPlayer()">
+		<span>{{position}}</span>
+		<input type="text" [(ngModel)]="playerName" (keyup)="searchPlayer()">
+	</div>
+
+	<div class="suggestions" *ngIf="players.length">
+	<span></span>
+		<ul *ngFor="let p of players">
+			<li>
+				<a (click)="select(p)">{{p.name}}</a>
+			</li>
+		</ul>
 	</div>
 </div>
