@@ -17,6 +17,7 @@ var RosterComponent = (function () {
         this.PlayersService = PlayersService;
         this.route = route;
         this.location = location;
+        this.player = [];
     }
     RosterComponent.prototype.ngOnInit = function () {
         this.positions = this.PlayersService.getAllPositions();

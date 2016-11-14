@@ -5,7 +5,6 @@
 	</div>
 
 	<div class="suggestions" *ngIf="players.length">
-	<span></span>
 		<ul *ngFor="let p of players">
 			<li>
 				<a (click)="select(p)">{{p.name}}</a>

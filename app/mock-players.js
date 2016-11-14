@@ -26,8 +26,8 @@ exports.PLAYERS = [
         team: "NE"
     },
     {
-        name: "Seattle D/ST",
-        fantasyPosition: 'D/ST',
+        name: "Seattle DST",
+        fantasyPosition: 'DST',
         fantasyPoints: 9.9,
         team: "SEA"
     },
@@ -38,36 +38,4 @@ exports.PLAYERS = [
         team: "ATL"
     }
 ];
-//export const POSITIONS: Position[] = ["QB", "RB", "WR", "TE", "FLEX", "BN"];
-/*
-QB: 2
-RB: 2
-WR: 3
-TE: 1
-FLEX: 1
-BN: 5
-
-var team = {
-  QB: {
-    max: 2,
-    players:[{
-      name:"Adam"
-    }]
-  },
-  RB: {
-    max: 3,
-    players:[{
-      name:"Dave"
-    }]
-  }
-}
-
-var structure = {
-  QB:2,
-  RB:2,
-  WR:3
-}
-
-]
-*/ 
 //# sourceMappingURL=mock-players.js.map

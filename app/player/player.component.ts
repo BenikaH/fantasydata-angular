@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PlayersService } from '../players.service';
+import { Player } from '../player';
 
 @Component({
     moduleId: module.id,

@@ -1,6 +1,9 @@
-<div class="content-block">
-    <div class="lineup">
-    {{position}}
-        <div class="proj-total"></div>
-    </div>
+<div class="lineup">
+   <div *ngFor="let player of players">
+     <div>
+     	<span>{{player.fantasyPosition}}</span>
+       	<div>{{player.name + ", " + player.team}}<span>{{player.fantasyPoints}}</span></div>
+     </div>
+   </div>
+   <div class="proj-total"></div>
 </div>

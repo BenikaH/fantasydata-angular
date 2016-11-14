@@ -14,7 +14,9 @@ import { PlayersService } from '../players.service'
 
 export class OptimizedComponent implements OnInit {
   player: Player;
+  players: Player[] = [];
   position;
+  //  fantasyPoints;
 
   constructor(
     private PlayersService: PlayersService,
@@ -26,8 +28,15 @@ export class OptimizedComponent implements OnInit {
     this.route.params.forEach((params: Params) => {
       this.PlayersService.getPlayer(name)
         .then(player => this.player = player);
+        console.log(this.player);
+
+      // this.PlayersService.getPlayer(fantasyPoints)
+      //   .then(fantasyPoints => this.fantasyPoints = fantasyPoints)
+      //     console.log(this.fantasyPoints);
     });
-    //this.positions = this.PlayersService.getAllPositions();
+
+    this.PlayersService.getPlayers()
+      .then(players => this.players = players);
   }
 
   goBack(): void {

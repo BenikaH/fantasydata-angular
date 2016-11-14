@@ -27,6 +27,21 @@ export class PlayersService {
 			));
 	}
 
+	// returnGreatest()
+	// Compare related positions, select highest value
+
+	// getPoints(fantasyPoints:number): Promise<Player> {
+	// 	return this.getPlayers()
+	// 		.then(players => players.find(player => player.fantasyPoints === fantasyPoints));
+	// }
+
+	// getTotal()
+	//	Add up all fantasy points returned on last view
+
+	//	Store value from query in array, so playerName
+	//	Store all player objects in this array
+	//	Reorder on next page through comparing fantasyPositions and fantasyPoints
+
 	Positions = {
 		"QB":1,
 		"RB":1,
@@ -39,7 +54,7 @@ export class PlayersService {
 		"playersQB":[{
 			name:'Ryan Tannehill',
 			fantasyPosition:'QB',
-			fantasyPoints:15.5,
+			fantasyPoints:"15.5",
 			team:"MIA"
 		 }/*,
 		 {
@@ -65,13 +80,13 @@ export class PlayersService {
 			fantasyPosition:'RB',
 			fantasyPoints:12,
 			team:"MIA"
-		}, 
+		}/*, 
 		{
 			name:'Ezekiel Elliott',
 			fantasyPosition:'RB',
 			fantasyPoints:16.5,
 			team:"DAL"
-		}/*,
+		},
 		{
 			name:'LeVeon Bell',
 			fantasyPosition:'RB',
@@ -101,18 +116,18 @@ export class PlayersService {
 			fantasyPosition:'WR',
 			fantasyPoints:16.3,
 			team:"PIT"
-		}/*,
+		},
 		{
 			name:'Julio Jones',
 			fantasyPosition:'WR',
 			fantasyPoints:12,
 			team:"ATL"			
-		}*/],
+		}],
 		"playersTE":[{
 			name:'Jason Witten',
 			fantasyPosition:'TE',
 			fantasyPoints:8.3,
-			team:"DAL"
+			team:"DAL",
 		}/*,
 		{
 			name:'Travis Kelce',
@@ -132,7 +147,7 @@ export class PlayersService {
 			fantasyPoints:8.9,
 			team:"CIN"			
 		}*/],
-		"playersFLEX":[{
+		"playersFlex":[{
 			name:'Mark Ingram',
 			fantasyPosition:'FLEX',
 			fantasyPoints:7.5,
@@ -204,12 +219,12 @@ export class PlayersService {
 			fantasyPoints:10,
 			team:"MIN"
 		}*/],
-		"playersBN":[{
+		"playersBench":[{
 			name:'Jarvis Landry',
 			fantasyPosition:'BN',
 			fantasyPoints:7,
 			team:"MIA"
-		},
+		}/*,
 		{
 			name:'Mike Wallace',
 			fantasyPosition:'BN',
@@ -227,12 +242,51 @@ export class PlayersService {
 			fantasyPosition:'BN',
 			fantasyPoints:16.7,
 			team:"JAX"		
-		}]
+		}*/]
+	}
+
+	setBench(number) {
+		this.Positions.BN = number;
+		this.Positions.playersBench = [];
+		var player = {
+			name:'',
+			fantasyPosition: '',
+			fantasyPoints: 0,
+			team:''
+		}
+
+		for(var i = 0; i < number; i++) {
+			this.Positions.playersBench.push(player);
+		}
+	}
+
+	setFlex(number) {
+		this.Positions.FLEX = number;
+		this.Positions.playersFlex = [];
+		var player = {
+			name:'',
+			fantasyPosition:'',
+			fantasyPoints:0,
+			team:''
+		}
+
+		for (var i = 0; i < number; i++) {
+			this.Positions.playersFlex.push(player);
+		}
 	}
 
 	setPosition(position:string, number) {
 		this.Positions[position] = number;
-		this.Positions.playersQB.push(new Player(position));
+		var player = {
+			name:'',
+			fantasyPosition:position,
+			fantasyPoints:0,
+			team:''
+		}
+		this.Positions['players' + position] = [];
+		for(var i = 0; i < number; i++) {
+			this.Positions['players' + position].push(player);
+		}
 	}
 
 	//returns position value from dropdown 

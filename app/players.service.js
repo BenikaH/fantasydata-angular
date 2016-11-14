@@ -8,11 +8,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var player_1 = require('./player');
 var mock_players_1 = require('./mock-players');
 var core_1 = require('@angular/core');
 var PlayersService = (function () {
     function PlayersService() {
+        // returnGreatest()
+        // Compare related positions, select highest value
+        // getPoints(fantasyPoints:number): Promise<Player> {
+        // 	return this.getPlayers()
+        // 		.then(players => players.find(player => player.fantasyPoints === fantasyPoints));
+        // }
+        // getTotal()
+        //	Add up all fantasy points returned on last view
+        //	Store value from query in array, so playerName
+        //	Store all player objects in this array
+        //	Reorder on next page through comparing fantasyPositions and fantasyPoints
         this.Positions = {
             "QB": 1,
             "RB": 1,
@@ -25,7 +35,7 @@ var PlayersService = (function () {
             "playersQB": [{
                     name: 'Ryan Tannehill',
                     fantasyPosition: 'QB',
-                    fantasyPoints: 15.5,
+                    fantasyPoints: "15.5",
                     team: "MIA"
                 } /*,
                 {
@@ -52,13 +62,13 @@ var PlayersService = (function () {
                     fantasyPosition: 'RB',
                     fantasyPoints: 12,
                     team: "MIA"
-                },
-                {
-                    name: 'Ezekiel Elliott',
-                    fantasyPosition: 'RB',
-                    fantasyPoints: 16.5,
-                    team: "DAL"
                 } /*,
+                {
+                    name:'Ezekiel Elliott',
+                    fantasyPosition:'RB',
+                    fantasyPoints:16.5,
+                    team:"DAL"
+                },
                 {
                     name:'LeVeon Bell',
                     fantasyPosition:'RB',
@@ -89,19 +99,18 @@ var PlayersService = (function () {
                     fantasyPosition: 'WR',
                     fantasyPoints: 16.3,
                     team: "PIT"
-                } /*,
+                },
                 {
-                    name:'Julio Jones',
-                    fantasyPosition:'WR',
-                    fantasyPoints:12,
-                    team:"ATL"
-                }*/
-            ],
+                    name: 'Julio Jones',
+                    fantasyPosition: 'WR',
+                    fantasyPoints: 12,
+                    team: "ATL"
+                }],
             "playersTE": [{
                     name: 'Jason Witten',
                     fantasyPosition: 'TE',
                     fantasyPoints: 8.3,
-                    team: "DAL"
+                    team: "DAL",
                 } /*,
                 {
                     name:'Travis Kelce',
@@ -122,7 +131,7 @@ var PlayersService = (function () {
                     team:"CIN"
                 }*/
             ],
-            "playersFLEX": [{
+            "playersFlex": [{
                     name: 'Mark Ingram',
                     fantasyPosition: 'FLEX',
                     fantasyPoints: 7.5,
@@ -197,30 +206,31 @@ var PlayersService = (function () {
                     team:"MIN"
                 }*/
             ],
-            "playersBN": [{
+            "playersBench": [{
                     name: 'Jarvis Landry',
                     fantasyPosition: 'BN',
                     fantasyPoints: 7,
                     team: "MIA"
+                } /*,
+                {
+                    name:'Mike Wallace',
+                    fantasyPosition:'BN',
+                    fantasyPoints:6.3,
+                    team:"BAL"
                 },
                 {
-                    name: 'Mike Wallace',
-                    fantasyPosition: 'BN',
-                    fantasyPoints: 6.3,
-                    team: "BAL"
+                    name:'Derrick Henry',
+                    fantasyPosition:'BN',
+                    fantasyPoints:4.9,
+                    team:"TEN"
                 },
                 {
-                    name: 'Derrick Henry',
-                    fantasyPosition: 'BN',
-                    fantasyPoints: 4.9,
-                    team: "TEN"
-                },
-                {
-                    name: 'Blake Bortles',
-                    fantasyPosition: 'BN',
-                    fantasyPoints: 16.7,
-                    team: "JAX"
-                }]
+                    name:'Blake Bortles',
+                    fantasyPosition:'BN',
+                    fantasyPoints:16.7,
+                    team:"JAX"
+                }*/
+            ]
         };
     }
     PlayersService.prototype.getPlayers = function () {
@@ -241,9 +251,44 @@ var PlayersService = (function () {
         return this.getPlayers()
             .then(function (players) { return players.filter(function (player) { return player.name.startsWith(name) && player.fantasyPosition === position; }); });
     };
+    PlayersService.prototype.setBench = function (number) {
+        this.Positions.BN = number;
+        this.Positions.playersBench = [];
+        var player = {
+            name: '',
+            fantasyPosition: '',
+            fantasyPoints: 0,
+            team: ''
+        };
+        for (var i = 0; i < number; i++) {
+            this.Positions.playersBench.push(player);
+        }
+    };
+    PlayersService.prototype.setFlex = function (number) {
+        this.Positions.FLEX = number;
+        this.Positions.playersFlex = [];
+        var player = {
+            name: '',
+            fantasyPosition: '',
+            fantasyPoints: 0,
+            team: ''
+        };
+        for (var i = 0; i < number; i++) {
+            this.Positions.playersFlex.push(player);
+        }
+    };
     PlayersService.prototype.setPosition = function (position, number) {
         this.Positions[position] = number;
-        this.Positions.playersQB.push(new player_1.Player(position));
+        var player = {
+            name: '',
+            fantasyPosition: position,
+            fantasyPoints: 0,
+            team: ''
+        };
+        this.Positions['players' + position] = [];
+        for (var i = 0; i < number; i++) {
+            this.Positions['players' + position].push(player);
+        }
     };
     //returns position value from dropdown 
     PlayersService.prototype.getTotalPosition = function (position) {

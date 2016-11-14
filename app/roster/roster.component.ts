@@ -14,6 +14,7 @@ import { PlayersService } from '../players.service';
 
 export class RosterComponent implements OnInit {
   positions;
+  player: Player[] = [];
 
   constructor(
     private PlayersService: PlayersService,
@@ -29,6 +30,7 @@ export class RosterComponent implements OnInit {
     this.location.back();
   }
 }
+
 /* same as (player => this.player = player); 
 function(player) {
   this.players = player

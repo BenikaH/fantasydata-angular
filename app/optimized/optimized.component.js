@@ -13,18 +13,25 @@ var router_1 = require('@angular/router');
 var common_1 = require('@angular/common');
 var players_service_1 = require('../players.service');
 var OptimizedComponent = (function () {
+    //  fantasyPoints;
     function OptimizedComponent(PlayersService, route, location) {
         this.PlayersService = PlayersService;
         this.route = route;
         this.location = location;
+        this.players = [];
     }
     OptimizedComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.params.forEach(function (params) {
             _this.PlayersService.getPlayer(name)
                 .then(function (player) { return _this.player = player; });
+            console.log(_this.player);
+            // this.PlayersService.getPlayer(fantasyPoints)
+            //   .then(fantasyPoints => this.fantasyPoints = fantasyPoints)
+            //     console.log(this.fantasyPoints);
         });
-        //this.positions = this.PlayersService.getAllPositions();
+        this.PlayersService.getPlayers()
+            .then(function (players) { return _this.players = players; });
     };
     OptimizedComponent.prototype.goBack = function () {
         this.location.back();

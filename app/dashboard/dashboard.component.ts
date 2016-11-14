@@ -14,17 +14,18 @@ import { PlayersService } from '../players.service';
 export class DashboardComponent implements OnInit {
 
   players: Player[] = [];
+  positions;
 
   constructor(
     private router: Router,
     private playersService: PlayersService) {}
 
   ngOnInit(): void {
-    this.playersService.getPlayers()
-      .then(players => this.players = players.slice(1, 5));
+    this.positions = this.playersService.getAllPositions();
+    console.log(this.positions);
   }
 
   onChange(event, position, value) {
-  this.playersService.setPosition(position, value);
+    this.playersService.setPosition(position, value);
   }
 }

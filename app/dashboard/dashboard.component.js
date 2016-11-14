@@ -18,9 +18,8 @@ var DashboardComponent = (function () {
         this.players = [];
     }
     DashboardComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.playersService.getPlayers()
-            .then(function (players) { return _this.players = players.slice(1, 5); });
+        this.positions = this.playersService.getAllPositions();
+        console.log(this.positions);
     };
     DashboardComponent.prototype.onChange = function (event, position, value) {
         this.playersService.setPosition(position, value);
