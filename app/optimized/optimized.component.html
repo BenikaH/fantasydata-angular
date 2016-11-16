@@ -1,9 +1,12 @@
 <div class="lineup">
-   <div *ngFor="let player of players">
-     <div>
-     	<span>{{player.fantasyPosition}}</span>
-       	<div>{{player.name + ", " + player.team}}<span>{{player.fantasyPoints}}</span></div>
-     </div>
+   <div>
+   	<span>{{highestQB.fantasyPosition}}</span>
+     	<div>{{highestQB.name + ", " + highestQB.team}}<span>{{highestQB.fantasyPoints}}</span></div>
+   </div>
+
+   <div>
+    <span>{{highestRB.fantasyPosition}}</span>
+      <div>{{highestRB.name + ", " + highestRB.team}}<span>{{highestRB.fantasyPoints}}</span></div>
    </div>
    <div class="proj-total"></div>
 </div>

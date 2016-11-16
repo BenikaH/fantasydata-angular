@@ -25,6 +25,9 @@ var RosterComponent = (function () {
     RosterComponent.prototype.goBack = function () {
         this.location.back();
     };
+    RosterComponent.prototype.setPlayer = function (p) {
+        console.log(p);
+    };
     RosterComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

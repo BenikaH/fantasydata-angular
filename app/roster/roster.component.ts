@@ -29,6 +29,10 @@ export class RosterComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+
+  setPlayer(p):void {
+    console.log(p);
+  }
 }
 
 /* same as (player => this.player = player); 

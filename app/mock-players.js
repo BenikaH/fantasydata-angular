@@ -8,31 +8,31 @@ exports.PLAYERS = [
         team: "MIA"
     },
     {
-        name: "Adrian Peterson",
-        fantasyPosition: 'RB',
+        name: "Aaron Rodgers",
+        fantasyPosition: 'QB',
         fantasyPoints: 15.6,
-        team: "MIN"
+        team: "GB"
     },
     {
-        name: "Antonio Brown",
-        fantasyPosition: 'WR',
+        name: "Tom Brady",
+        fantasyPosition: 'QB',
         fantasyPoints: 17.7,
-        team: "PIT"
-    },
-    {
-        name: "Rob Gronkowski",
-        fantasyPosition: 'TE',
-        fantasyPoints: 14,
         team: "NE"
     },
     {
-        name: "Seattle DST",
+        name: "Ben Roethlisberger",
+        fantasyPosition: 'QB',
+        fantasyPoints: 14,
+        team: "PIT"
+    },
+    {
+        name: "Russell Wilson",
         fantasyPosition: 'DST',
         fantasyPoints: 9.9,
         team: "SEA"
     },
     {
-        name: "Matt Bryant",
+        name: "Matt Ryan",
         fantasyPosition: 'K',
         fantasyPoints: 8.4,
         team: "ATL"

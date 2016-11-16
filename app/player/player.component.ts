@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { PlayersService } from '../players.service';
 import { Player } from '../player';
 
@@ -17,13 +17,15 @@ export class PlayerComponent implements OnInit {
      */
     @Input() position;
 
+    @Input() index;
+
     /**
      * This field should probably represent the actual player
      * that was selected rather than just the name
      */
-    player;
     players:Player[] = [];
-    playerName:string;
+    @Input() playerName:string;
+    @Output() player = new EventEmitter();
 
     constructor(
         private PlayersService: PlayersService
@@ -38,8 +40,8 @@ export class PlayerComponent implements OnInit {
     }
 
     select(p) {
-        this.player = p;
         this.players = [];
         this.playerName = p.name;
+        this.player.emit(p);
     }
 }

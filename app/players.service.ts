@@ -27,20 +27,25 @@ export class PlayersService {
 			));
 	}
 
-	// returnGreatest()
-	// Compare related positions, select highest value
+	getHighestQB():Promise<Player> {
+		return this.Positions.playersQB.reduce(function(previous, current) {
+			if(current.fantasyPoints > previous.fantasyPoints) {
+				return current;
+			} else {
+				return previous;
+			}
+		});
+	}
 
-	// getPoints(fantasyPoints:number): Promise<Player> {
-	// 	return this.getPlayers()
-	// 		.then(players => players.find(player => player.fantasyPoints === fantasyPoints));
-	// }
-
-	// getTotal()
-	//	Add up all fantasy points returned on last view
-
-	//	Store value from query in array, so playerName
-	//	Store all player objects in this array
-	//	Reorder on next page through comparing fantasyPositions and fantasyPoints
+	getHighestRB():Promise<Player> {
+		return this.Positions.playersQB.reduce(function(previous, current) {
+			if (current.fantasyPoints > previous.fantasyPoints) {
+				return current;
+			} else {
+				return previous;
+			}
+		})
+	}
 
 	Positions = {
 		"QB":1,
@@ -243,6 +248,15 @@ export class PlayersService {
 			fantasyPoints:16.7,
 			team:"JAX"		
 		}*/]
+	}
+
+	setPlayer(player) {
+		let position = player.fantasyPosition;
+		delete player.index;
+		var index = this.Positions['players' + position].findIndex(function(p){
+			return p.name === '';
+		});
+		this.Positions['players' + position][index] = player;
 	}
 
 	setBench(number) {

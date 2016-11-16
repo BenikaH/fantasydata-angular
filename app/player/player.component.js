@@ -13,7 +13,12 @@ var players_service_1 = require('../players.service');
 var PlayerComponent = (function () {
     function PlayerComponent(PlayersService) {
         this.PlayersService = PlayersService;
+        /**
+         * This field should probably represent the actual player
+         * that was selected rather than just the name
+         */
         this.players = [];
+        this.player = new core_1.EventEmitter();
     }
     PlayerComponent.prototype.ngOnInit = function () {
     };
@@ -23,14 +28,26 @@ var PlayerComponent = (function () {
             .then(function (players) { return _this.players = players; });
     };
     PlayerComponent.prototype.select = function (p) {
-        this.player = p;
         this.players = [];
         this.playerName = p.name;
+        this.player.emit(p);
     };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Object)
     ], PlayerComponent.prototype, "position", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], PlayerComponent.prototype, "index", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], PlayerComponent.prototype, "playerName", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], PlayerComponent.prototype, "player", void 0);
     PlayerComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

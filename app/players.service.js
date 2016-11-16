@@ -12,17 +12,6 @@ var mock_players_1 = require('./mock-players');
 var core_1 = require('@angular/core');
 var PlayersService = (function () {
     function PlayersService() {
-        // returnGreatest()
-        // Compare related positions, select highest value
-        // getPoints(fantasyPoints:number): Promise<Player> {
-        // 	return this.getPlayers()
-        // 		.then(players => players.find(player => player.fantasyPoints === fantasyPoints));
-        // }
-        // getTotal()
-        //	Add up all fantasy points returned on last view
-        //	Store value from query in array, so playerName
-        //	Store all player objects in this array
-        //	Reorder on next page through comparing fantasyPositions and fantasyPoints
         this.Positions = {
             "QB": 1,
             "RB": 1,
@@ -250,6 +239,34 @@ var PlayersService = (function () {
     PlayersService.prototype.searchPlayers = function (name, position) {
         return this.getPlayers()
             .then(function (players) { return players.filter(function (player) { return player.name.startsWith(name) && player.fantasyPosition === position; }); });
+    };
+    PlayersService.prototype.getHighestQB = function () {
+        return this.Positions.playersQB.reduce(function (previous, current) {
+            if (current.fantasyPoints > previous.fantasyPoints) {
+                return current;
+            }
+            else {
+                return previous;
+            }
+        });
+    };
+    PlayersService.prototype.getHighestRB = function () {
+        return this.Positions.playersQB.reduce(function (previous, current) {
+            if (current.fantasyPoints > previous.fantasyPoints) {
+                return current;
+            }
+            else {
+                return previous;
+            }
+        });
+    };
+    PlayersService.prototype.setPlayer = function (player) {
+        var position = player.fantasyPosition;
+        delete player.index;
+        var index = this.Positions['players' + position].findIndex(function (p) {
+            return p.name === '';
+        });
+        this.Positions['players' + position][index] = player;
     };
     PlayersService.prototype.setBench = function (number) {
         this.Positions.BN = number;
