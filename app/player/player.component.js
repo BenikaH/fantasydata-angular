@@ -26,6 +26,7 @@ var PlayerComponent = (function () {
         var _this = this;
         this.PlayersService.searchPlayers(this.playerName, this.position)
             .then(function (players) { return _this.players = players; });
+        console.log(this.players);
     };
     PlayerComponent.prototype.select = function (p) {
         this.players = [];

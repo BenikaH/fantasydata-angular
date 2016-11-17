@@ -18,6 +18,10 @@ export class OptimizedComponent implements OnInit {
   position;
   highestQB;
   highestRB;
+  highestWR;
+  highestTE;
+  highestK;
+  highestDST;
 
   constructor(
     private PlayersService: PlayersService,
@@ -38,6 +42,10 @@ export class OptimizedComponent implements OnInit {
       console.log(this.highestQB);
 
     this.highestRB = this.PlayersService.getHighestRB();
+    this.highestWR = this.PlayersService.getHighestWR();
+    this.highestTE = this.PlayersService.getHighestTE();
+    this.highestK = this.PlayersService.getHighestK();
+    this.highestDST = this.PlayersService.getHighestDST();
   }
 
   goBack(): void {

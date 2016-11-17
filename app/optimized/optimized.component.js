@@ -30,6 +30,10 @@ var OptimizedComponent = (function () {
         this.highestQB = this.PlayersService.getHighestQB();
         console.log(this.highestQB);
         this.highestRB = this.PlayersService.getHighestRB();
+        this.highestWR = this.PlayersService.getHighestWR();
+        this.highestTE = this.PlayersService.getHighestTE();
+        this.highestK = this.PlayersService.getHighestK();
+        this.highestDST = this.PlayersService.getHighestDST();
     };
     OptimizedComponent.prototype.goBack = function () {
         this.location.back();

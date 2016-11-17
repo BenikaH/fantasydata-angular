@@ -251,7 +251,47 @@ var PlayersService = (function () {
         });
     };
     PlayersService.prototype.getHighestRB = function () {
-        return this.Positions.playersQB.reduce(function (previous, current) {
+        return this.Positions.playersRB.reduce(function (previous, current) {
+            if (current.fantasyPoints > previous.fantasyPoints) {
+                return current;
+            }
+            else {
+                return previous;
+            }
+        });
+    };
+    PlayersService.prototype.getHighestWR = function () {
+        return this.Positions.playersWR.reduce(function (previous, current) {
+            if (current.fantasyPoints > previous.fantasyPoints) {
+                return current;
+            }
+            else {
+                return previous;
+            }
+        });
+    };
+    PlayersService.prototype.getHighestTE = function () {
+        return this.Positions.playersTE.reduce(function (previous, current) {
+            if (current.fantasyPoints > previous.fantasyPoints) {
+                return current;
+            }
+            else {
+                return previous;
+            }
+        });
+    };
+    PlayersService.prototype.getHighestK = function () {
+        return this.Positions.playersK.reduce(function (previous, current) {
+            if (current.fantasyPoints > previous.fantasyPoints) {
+                return current;
+            }
+            else {
+                return previous;
+            }
+        });
+    };
+    PlayersService.prototype.getHighestDST = function () {
+        return this.Positions.playersDST.reduce(function (previous, current) {
             if (current.fantasyPoints > previous.fantasyPoints) {
                 return current;
             }

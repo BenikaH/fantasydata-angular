@@ -27,7 +27,7 @@ export class PlayersService {
 			));
 	}
 
-	getHighestQB():Promise<Player> {
+	getHighestQB():Player {
 		return this.Positions.playersQB.reduce(function(previous, current) {
 			if(current.fantasyPoints > previous.fantasyPoints) {
 				return current;
@@ -37,9 +37,49 @@ export class PlayersService {
 		});
 	}
 
-	getHighestRB():Promise<Player> {
-		return this.Positions.playersQB.reduce(function(previous, current) {
+	getHighestRB():Player {
+		return this.Positions.playersRB.reduce(function(previous, current) {
 			if (current.fantasyPoints > previous.fantasyPoints) {
+				return current;
+			} else {
+				return previous;
+			}
+		})
+	}
+
+	getHighestWR():Player {
+		return this.Positions.playersWR.reduce(function(previous,current) {
+			if(current.fantasyPoints > previous.fantasyPoints) {
+				return current;
+			} else {
+				return previous;
+			}
+		})
+	}
+
+	getHighestTE():Player {
+		return this.Positions.playersTE.reduce(function(previous,current) {
+			if(current.fantasyPoints > previous.fantasyPoints) {
+				return current;
+			} else {
+				return previous;
+			}
+		})
+	}
+
+	getHighestK():Player {
+		return this.Positions.playersK.reduce(function(previous,current) {
+			if(current.fantasyPoints > previous.fantasyPoints) {
+				return current;
+			} else {
+				return previous;
+			}
+		})
+	}
+
+	getHighestDST():Player {
+		return this.Positions.playersDST.reduce(function(previous,current) {
+			if(current.fantasyPoints > previous.fantasyPoints) {
 				return current;
 			} else {
 				return previous;

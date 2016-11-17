@@ -37,6 +37,7 @@ export class PlayerComponent implements OnInit {
     searchPlayer(){
         this.PlayersService.searchPlayers(this.playerName, this.position)
             .then(players => this.players = players);
+            console.log(this.players);
     }
 
     select(p) {
