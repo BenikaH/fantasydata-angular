@@ -1,39 +1,16 @@
 <div class="lineup">
+    <h2>Starter</h2>
     <player 
-        *ngFor="let player of positions.playersQB; let i = index"
+        *ngFor="let player of roster.starter; let i = index"
         [position]="player.fantasyPosition"
         [playerName]="player.name"
         (player)="setPlayer($event)"></player>
-
+    <h2>Bench</h2>
     <player 
-        *ngFor="let player of positions.playersRB; let i = index"
+        *ngFor="let player of roster.bench; let i = index"
         [position]="player.fantasyPosition"
         [playerName]="player.name"
         (player)="setPlayer($event)"></player>
-
-    <player 
-        *ngFor="let player of positions.playersWR; let i = index"
-        [position]="player.fantasyPosition"
-        [playerName]="player.name"
-        (player)="setPlayer($event)"></player>
-
-    <player 
-        *ngFor="let player of positions.playersTE; let i = index"
-        [position]="player.fantasyPosition"
-        [playerName]="player.name"
-        (player)="setPlayer($event)"></player>
-
-    <player 
-        *ngFor="let player of positions.playersFLEX; let i = index"
-        [position]="player.fantasyPosition"
-        [playerName]="player.name"
-        (player)="setPlayer($event)"></player>
-
-    <player 
-        *ngFor="let player of positions.playersDST; let i = index"
-        [position]="player.fantasyPosition"
-        [playerName]="player.name"
-        (player)="setPlayer($event)"></player>    
 
 <!-- 	<player *ngFor="let player of positions.playersQB" [position]="player.fantasyPosition"></player>
     <player *ngFor="let player of positions.playersRB" [position]="player.fantasyPosition"></player>
