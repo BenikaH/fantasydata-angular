@@ -13,10 +13,6 @@ var players_service_1 = require('../players.service');
 var PlayerComponent = (function () {
     function PlayerComponent(PlayersService) {
         this.PlayersService = PlayersService;
-        /**
-         * This field should probably represent the actual player
-         * that was selected rather than just the name
-         */
         this.players = [];
         this.player = new core_1.EventEmitter();
     }

@@ -34,9 +34,3 @@ export class RosterComponent implements OnInit {
     console.log(p);
   }
 }
-
-/* same as (player => this.player = player); 
-function(player) {
-  this.players = player
-}
-*/

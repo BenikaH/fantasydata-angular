@@ -40,9 +40,4 @@ var RosterComponent = (function () {
     return RosterComponent;
 }());
 exports.RosterComponent = RosterComponent;
-/* same as (player => this.player = player);
-function(player) {
-  this.players = player
-}
-*/ 
 //# sourceMappingURL=roster.component.js.map

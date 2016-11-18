@@ -28,12 +28,19 @@ var OptimizedComponent = (function () {
         this.PlayersService.getPlayers()
             .then(function (players) { return _this.players = players; });
         this.highestQB = this.PlayersService.getHighestQB();
-        console.log(this.highestQB);
+        this.topQBPts = parseInt(this.highestQB.fantasyPoints);
         this.highestRB = this.PlayersService.getHighestRB();
+        this.topRBPts = parseInt(this.highestRB.fantasyPoints);
         this.highestWR = this.PlayersService.getHighestWR();
+        this.topWRPts = parseInt(this.highestWR.fantasyPoints);
         this.highestTE = this.PlayersService.getHighestTE();
+        this.topTEPts = parseInt(this.highestTE.fantasyPoints);
         this.highestK = this.PlayersService.getHighestK();
+        this.topKPts = parseInt(this.highestK.fantasyPoints);
         this.highestDST = this.PlayersService.getHighestDST();
+        this.topDSTPts = parseInt(this.highestDST.fantasyPoints);
+        this.total = this.topQBPts + this.topRBPts + this.topWRPts + this.topTEPts + this.topKPts + this.topDSTPts;
+        console.log(this.total);
     };
     OptimizedComponent.prototype.goBack = function () {
         this.location.back();

@@ -22,6 +22,7 @@ export class OptimizedComponent implements OnInit {
   highestTE;
   highestK;
   highestDST;
+  total;
 
   constructor(
     private PlayersService: PlayersService,
@@ -39,13 +40,25 @@ export class OptimizedComponent implements OnInit {
       .then(players => this.players = players);
 
     this.highestQB = this.PlayersService.getHighestQB();
-      console.log(this.highestQB);
+    this.topQBPts = parseInt(this.highestQB.fantasyPoints);
 
     this.highestRB = this.PlayersService.getHighestRB();
+    this.topRBPts = parseInt(this.highestRB.fantasyPoints);
+
     this.highestWR = this.PlayersService.getHighestWR();
+    this.topWRPts = parseInt(this.highestWR.fantasyPoints);
+
     this.highestTE = this.PlayersService.getHighestTE();
+    this.topTEPts = parseInt(this.highestTE.fantasyPoints);
+
     this.highestK = this.PlayersService.getHighestK();
+    this.topKPts = parseInt(this.highestK.fantasyPoints);
+
     this.highestDST = this.PlayersService.getHighestDST();
+    this.topDSTPts = parseInt(this.highestDST.fantasyPoints);
+
+    this.total = this.topQBPts + this.topRBPts + this.topWRPts + this.topTEPts + this.topKPts + this.topDSTPts;
+    console.log(this.total);
   }
 
   goBack(): void {

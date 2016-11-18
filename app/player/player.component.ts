@@ -10,19 +10,11 @@ import { Player } from '../player';
 })
 
 export class PlayerComponent implements OnInit {
-    /**
-     * This position field is passed into the
-     * component from its parent component. Look for
-     * the <player position="QB"> in the parent.
-     */
+
     @Input() position;
 
     @Input() index;
 
-    /**
-     * This field should probably represent the actual player
-     * that was selected rather than just the name
-     */
     players:Player[] = [];
     @Input() playerName:string;
     @Output() player = new EventEmitter();

@@ -88,14 +88,14 @@ export class PlayersService {
 	}
 
 	Positions = {
-		"QB":1,
-		"RB":1,
-		"WR":1,
-		"TE":1,
-		"FLEX":1,
-		"DST":1,
-		"K":1,
-		"BN":1,
+		"QB":0,
+		"RB":0,
+		"WR":0,
+		"TE":0,
+		"FLEX":0,
+		"DST":0,
+		"K":0,
+		"BN":0,
 		"playersQB":[{
 			name:'Ryan Tannehill',
 			fantasyPosition:'QB',

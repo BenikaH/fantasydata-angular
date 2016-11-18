@@ -1,13 +1,8 @@
 <div class="lineup">
-<!--   <div>
-    <span>{{highestQB.fantasyPosition}}</span>
-    <div>{{highestQB.name}}</div>
-  </div>
-  <div>
-    <span>{{highestWR.fantasyPosition}}</span>
-    <div>{{highestWR.name}}</div>
-  </div> -->
-
+   <div class="header bold">
+    <span>POS</span>
+      <div class="profile">Player, TEAM</div><div class="fpts">FPTS</div>
+   </div>
    <div class="row">
    	<span>{{highestQB.fantasyPosition}}</span>
      	<div class="profile">{{highestQB.name + ", " + highestQB.team}}</div><div class="fpts">{{highestQB.fantasyPoints}}</div>
@@ -32,9 +27,9 @@
     <span>{{highestDST.fantasyPosition}}</span>
       <div class="profile">{{highestDST.name + ", " + highestDST.team}}</div><div class="fpts">{{highestDST.fantasyPoints}}</div>
    </div>
-   <div class="row bold">
+   <div class="header bold">
      <span></span>
-     <div class="profile bold">Projected Total</div>
-     <div class="fpts bold">55</div>
+     <div class="profile">Projected Total</div>
+     <div class="fpts">{{total}}</div>
    </div>
 </div>
