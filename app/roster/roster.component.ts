@@ -15,6 +15,7 @@ import { PlayersService } from '../players.service';
 export class RosterComponent implements OnInit {
   positions;
   player: Player[] = [];
+  roster;
 
   constructor(
     private PlayersService: PlayersService,
@@ -24,6 +25,7 @@ export class RosterComponent implements OnInit {
 
   ngOnInit(): void {
     this.positions = this.PlayersService.getAllPositions();
+    this.roster = this.PlayersService.getRoster();
   }
 
   goBack(): void {
@@ -32,5 +34,6 @@ export class RosterComponent implements OnInit {
 
   setPlayer(p):void {
     console.log(p);
+    this.PlayersService.setPlayer(p);
   }
 }
