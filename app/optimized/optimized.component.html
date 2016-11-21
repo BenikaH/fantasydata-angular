@@ -3,30 +3,20 @@
     <span>POS</span>
       <div class="profile">Player, TEAM</div><div class="fpts">FPTS</div>
    </div>
-   <div class="row">
-   	<span>{{highestQB.fantasyPosition}}</span>
-     	<div class="profile">{{highestQB.name + ", " + highestQB.team}}</div><div class="fpts">{{highestQB.fantasyPoints}}</div>
+
+   <div class="row" *ngFor="let player of roster.starter">
+   	<span>{{player.fantasyPosition}}</span>
+     	<div class="profile">{{player.name + ", " + player.team}}</div>
+      <div class="fpts">{{player.fantasyPoints}}</div>
    </div>
-   <div class="row">
-    <span>{{highestRB.fantasyPosition}}</span>
-      <div class="profile">{{highestRB.name + ", " + highestRB.team}}</div><div class="fpts">{{highestRB.fantasyPoints}}</div>
+
+   <div class="row" *ngFor="let player of roster.bench">
+    <span>{{player.fantasyPosition}} (Bench)</span>
+      <div class="profile">{{player.name + ", " + player.team}}</div>
+      <div class="fpts">{{player.fantasyPoints}}</div>
    </div>
-   <div class="row">
-    <span>{{highestWR.fantasyPosition}}</span>
-      <div class="profile">{{highestWR.name + ", " + highestWR.team}}</div><div class="fpts">{{highestWR.fantasyPoints}}</div>
-   </div>
-   <div class="row">
-    <span>{{highestTE.fantasyPosition}}</span>
-      <div class="profile">{{highestTE.name + ", " + highestTE.team}}</div><div class="fpts">{{highestTE.fantasyPoints}}</div>
-   </div>
-   <div class="row">
-    <span>{{highestK.fantasyPosition}}</span>
-      <div class="profile">{{highestK.name + ", " + highestK.team}}</div><div class="fpts">{{highestK.fantasyPoints}}</div>
-   </div>
-   <div class="row">
-    <span>{{highestDST.fantasyPosition}}</span>
-      <div class="profile">{{highestDST.name + ", " + highestDST.team}}</div><div class="fpts">{{highestDST.fantasyPoints}}</div>
-   </div>
+
+
    <div class="header bold">
      <span></span>
      <div class="profile">Projected Total</div>

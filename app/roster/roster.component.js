@@ -21,12 +21,14 @@ var RosterComponent = (function () {
     }
     RosterComponent.prototype.ngOnInit = function () {
         this.positions = this.PlayersService.getAllPositions();
+        this.roster = this.PlayersService.getRoster();
     };
     RosterComponent.prototype.goBack = function () {
         this.location.back();
     };
     RosterComponent.prototype.setPlayer = function (p) {
         console.log(p);
+        this.PlayersService.setPlayer(p);
     };
     RosterComponent = __decorate([
         core_1.Component({
