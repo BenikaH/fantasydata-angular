@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var mock_players_1 = require('./mock-players');
+require("rxjs/add/operator/toPromise");
 var core_1 = require('@angular/core');
 var http_1 = require("@angular/http");
 var PlayersService = (function () {
@@ -88,16 +89,6 @@ var PlayersService = (function () {
     };
     PlayersService.prototype.setPosition = function (position, number) {
         this.Positions[position] = number;
-        // var player = {
-        // 	name:'',
-        // 	fantasyPosition:position,
-        // 	fantasyPoints:0,
-        // 	team:''
-        // }
-        // this.Positions['players' + position] = [];
-        // for(var i = 0; i < number; i++) {
-        // 	this.Positions['players' + position].push(player);
-        // }
     };
     //returns position value from dropdown 
     PlayersService.prototype.getTotalPosition = function (position) {
@@ -149,9 +140,8 @@ var PlayersService = (function () {
     };
     PlayersService.prototype.optimizeRoster = function () {
         var _this = this;
-        //code to select highest player for each position on the starter
         console.log(this.roster);
-        this.roster.starter.forEach(function (player, idx) {
+        this.roster.starter.forEach(function (player) {
             var index = _this.roster.bench.findIndex(function (p) {
                 return p.fantasyPoints > player.fantasyPoints
                     && p.fantasyPosition == player.fantasyPosition;
@@ -160,7 +150,7 @@ var PlayersService = (function () {
                 player.bench = true;
                 var benchplayer = _this.roster.bench.splice(index, 1, player);
                 benchplayer[0].bench = false;
-                _this.roster.starter.splice(idx, 1, benchplayer[0]);
+                _this.roster.starter.splice(index, 1, benchplayer[0]);
             }
         });
     };

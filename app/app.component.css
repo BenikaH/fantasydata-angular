@@ -15,7 +15,9 @@
     }
     #banner h1 {
         font-size:3em;
-        color:midnightblue;
+        color:#3b8ec2;
+        font-family: fantasy;
+        letter-spacing: 0.05em;
     }
     #content {
         width:100%;

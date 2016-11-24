@@ -1,12 +1,13 @@
 import { Player } from './player';
 import { PLAYERS } from './mock-players';
+import "rxjs/add/operator/toPromise";
 
 import { Injectable } from '@angular/core';
 import {Http} from "@angular/http";
 
+
 @Injectable()
 export class PlayersService {
-
 
 	constructor(private http: Http){
 
@@ -21,7 +22,7 @@ export class PlayersService {
 		// 	.catch(this.handleError);
 	}
 
-	handleError(err){
+	handleError(err) {
 		console.log(err);
 	}
 
@@ -51,11 +52,10 @@ export class PlayersService {
 	}
 
 	getHighestPosition(position){
-		let starters = this.roster.starter.filter((player)=>{
+		let starters = this.roster.starter.filter((player)=> {
 			return player.fantasyPosition === position;
 		});
-
-		let bench = this.roster.bench.filter((player)=>{
+		let bench = this.roster.bench.filter((player) => {
 			return player.fantasyPosition === position;
 		});
 
@@ -66,8 +66,8 @@ export class PlayersService {
 				return previous;
 			}
 		});
-
 	}
+
 
 	Positions = {
 		"QB":1,
@@ -94,19 +94,8 @@ export class PlayersService {
 		status[index] = player;
 	}
 
-
 	setPosition(position:string, number) {
 		this.Positions[position] = number;
-		// var player = {
-		// 	name:'',
-		// 	fantasyPosition:position,
-		// 	fantasyPoints:0,
-		// 	team:''
-		// }
-		// this.Positions['players' + position] = [];
-		// for(var i = 0; i < number; i++) {
-		// 	this.Positions['players' + position].push(player);
-		// }
 	}
 
 	//returns position value from dropdown 
@@ -118,12 +107,13 @@ export class PlayersService {
 		return this.Positions;
 	}
 
-	getRoster(){
-		if(this.roster.starter.length == 0){
+	getRoster() {
+		if(this.roster.starter.length == 0) {
 			this.createRoster();
 		}
 		return this.roster;
 	}
+
 
 	rosterSize(){
 		return this.Positions.QB +
@@ -136,46 +126,46 @@ export class PlayersService {
 			this.Positions.BN;
 	}
 
-	createRoster(){
-		Object.keys(this.Positions).forEach((position)=>{
-			for(let i = 0; i < this.Positions[position]; i++){
-				if(position === "BN"){
+	createRoster() {
+		Object.keys(this.Positions).forEach((position) =>{
+			for(let i = 0; i < this.Positions[position]; i++) {
+				if(position === "BN") {
 					this.roster.bench.push({
 						name:'',
-						fantasyPosition: position,
-						fantasyPoints: 0,
-						team:'',
-						bench:true
-					});
-				}else {
-					this.roster.starter.push({
-						name: '',
-						fantasyPosition: position,
+						fantasyPosition:position,
 						fantasyPoints: 0,
 						team: '',
+						bench:true
+					});					
+				} else {
+					this.roster.starter.push({
+						name:'',
+						fantasyPosition:position,
+						fantasyPoints:0,
+						team:'',
 						bench:false
-					});
+					})
 				}
-			}
+			}			
 		});
 	}
 
-	optimizeRoster(){
-		//code to select highest player for each position on the starter
+	optimizeRoster() {
 		console.log(this.roster);
 		this.roster.starter.forEach(
-			(player, idx) => {
+			(player) => {
 				let index = this.roster.bench.findIndex( (p) => {
-					return p.fantasyPoints > player.fantasyPoints
-						&& p.fantasyPosition == player.fantasyPosition;
+					return p.fantasyPoints > player.fantasyPoints 
+					&& p.fantasyPosition == player.fantasyPosition; 
 				});
-				if(index > -1){
+				if(index > -1) {
 					player.bench = true;
 					let benchplayer = this.roster.bench.splice(index, 1, player);
-					benchplayer[0].bench = false;
-					this.roster.starter.splice(idx, 1, benchplayer[0]);
+					benchplayer[0].bench = false; 
+					this.roster.starter.splice(index, 1, benchplayer[0]);
 				}
 			}
 		);
 	}
 }
+

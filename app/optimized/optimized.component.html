@@ -3,17 +3,19 @@
     <span>POS</span>
       <div class="profile">Player, TEAM</div><div class="fpts">FPTS</div>
    </div>
+
    <div class="row" *ngFor="let player of roster.starter">
-   	    <span>{{player.fantasyPosition}}</span>
+   	<span>{{player.fantasyPosition}}</span>
      	<div class="profile">{{player.name + ", " + player.team}}</div>
-        <div class="fpts">{{player.fantasyPoints}}</div>
+      <div class="fpts">{{player.fantasyPoints}}</div>
    </div>
 
-    <div class="row bench" *ngFor="let player of roster.bench">
-        <span>{{player.fantasyPosition}} (Bench)</span>
-        <div class="profile">{{player.name + ", " + player.team}}</div>
-        <div class="fpts">{{player.fantasyPoints}}</div>
-    </div>
+   <div class="row" *ngFor="let player of roster.bench">
+    <span>{{player.fantasyPosition}} (Bench)</span>
+      <div class="profile">{{player.name + ", " + player.team}}</div>
+      <div class="fpts">{{player.fantasyPoints}}</div>
+   </div>
+
    <div class="header bold">
      <span></span>
      <div class="profile">Projected Total</div>

@@ -1,10 +1,22 @@
-    .lineup div {
+    .row, .header {
+        width:100%;
         border-top:1px solid #D7DDE1;
         border-bottom:1px solid #D7DDE1;
         display:flex;
         align-items:center;
         flex-grow:1;
-        height:2em;
+        height:3em;
+    }
+    .row:hover {
+        font-weight: bold;
+    }
+    .row:nth-of-type(odd) {
+        background-color:#F8F8FF;
+    }
+    .row span, .header span {
+        width:15%;
+        margin:0 0.25em;
+        text-align:center;
     }
     .lineup span {
         margin-left:1em;
@@ -15,6 +27,7 @@
         height:2em;
         width:91%;
         border:none;
+        background-color:#F8F8FF;
     }
     .content-block input {
         border:none;
@@ -25,33 +38,22 @@
         font-family: monospace;
         font-size: 1.1em;
     }
-
-    .suggestions{
-        border:solid 1px #f1f1f1;
-        position:absolute;
-        background: white;
-        width:623px;
-    }
-
-    .suggestions ul{
-        padding: 0px;
-        margin: 0px;
+    #suggestions {
         width:100%;
+        display: inline-block;
     }
-    .suggestions ul li{
+    #suggestions ul {
+        position:relative;
+        display: flex;
+        align-items: center;
+        margin:0;
+        background-color:white;
+        height:2em;
+    }
+    #suggestions ul li {
         list-style: none;
-        padding: 0px;
-        margin: 0px;
     }
-
-    .suggestions ul li a{
-        padding:5px;
-        display: block;
-        text-decoration: none;
-        color:#7E7E7E;
-    }
-
-    .suggestions ul li a:hover{
-        background-color: #f1f1f1;
+    #suggestions ul:hover {
+        background-color:#F1F1F1;
         cursor:pointer;
     }

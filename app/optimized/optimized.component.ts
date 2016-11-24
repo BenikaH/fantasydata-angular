@@ -16,21 +16,21 @@ export class OptimizedComponent implements OnInit {
   player: Player;
   players: Player[] = [];
   position;
-  highestQB;
-  highestRB;
-  highestWR;
-  highestTE;
-  highestK;
-  highestDST;
-  total;
-  topQBPts;
-  topRBPts;
-  topWRPts;
-  topTEPts;
-  topKPts;
-  topDSTPts;
-
   roster;
+  highestQB;
+  topQBPts;
+  highestRB;
+  topRBPts;
+  highestWR;
+  topWRPts;
+  highestTE;
+  topTEPts;
+  highestK;
+  topKPts
+  highestDST;
+  topDSTPts;
+  total;
+
 
   constructor(
     private PlayersService: PlayersService,
@@ -48,6 +48,7 @@ export class OptimizedComponent implements OnInit {
       .then(players => this.players = players);
 
     this.highestQB = this.PlayersService.getHighestPosition('QB');
+
     this.topQBPts = parseInt(this.highestQB.fantasyPoints);
 
     this.highestRB = this.PlayersService.getHighestPosition('RB');
@@ -70,7 +71,6 @@ export class OptimizedComponent implements OnInit {
 
     this.PlayersService.optimizeRoster();
     this.roster = this.PlayersService.getRoster();
-
   }
 
   goBack(): void {

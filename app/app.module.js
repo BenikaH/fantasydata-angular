@@ -18,7 +18,6 @@ var optimized_component_1 = require('./optimized/optimized.component');
 var roster_component_1 = require('./roster/roster.component');
 var players_service_1 = require('./players.service');
 var player_component_1 = require('./player/player.component');
-//import { AutocompleteComponent } from './autocomplete/autocomplete.component'
 var app_routing_module_1 = require('./app-routing.module');
 var AppModule = (function () {
     function AppModule() {
