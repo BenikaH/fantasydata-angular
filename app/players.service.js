@@ -16,7 +16,6 @@ var PlayersService = (function () {
     function PlayersService(http) {
         this.http = http;
         this.Positions = {
-<<<<<<< HEAD
             "QB": 1,
             "RB": 1,
             "WR": 1,
@@ -25,32 +24,18 @@ var PlayersService = (function () {
             "DST": 1,
             "K": 1,
             "BN": 1
-=======
-            "QB": 0,
-            "RB": 0,
-            "WR": 0,
-            "TE": 0,
-            "FLEX": 0,
-            "DST": 0,
-            "K": 0,
-            "BN": 0
         };
         this.roster = {
             starter: [],
             bench: []
->>>>>>> d6093d095ec843b5e6da08662a257170fe8e7094
         };
-        this.roster = {
-            starter: [],
-            bench: []
-        }; //actual players on team
     }
     PlayersService.prototype.getPlayers = function () {
         return Promise.resolve(mock_players_1.PLAYERS);
-        /*		return this.http.get("https://mysterious-falls-52077.herokuapp.com/profile")
-                    .toPromise()
-                    .then(response => response.json().data as Player[])
-                    .catch(this.handleError);*/
+        // return this.http.get('YOUR URL')
+        // 	.toPromise()
+        // 	.then(response => response.json().data as Player[])
+        // 	.catch(this.handleError);
     };
     PlayersService.prototype.handleError = function (err) {
         console.log(err);
@@ -68,7 +53,6 @@ var PlayersService = (function () {
     };
     PlayersService.prototype.searchPlayers = function (name, position, bench) {
         return this.getPlayers()
-<<<<<<< HEAD
             .then(function (players) {
             if (bench) {
                 return players;
@@ -78,9 +62,6 @@ var PlayersService = (function () {
                     && player.fantasyPosition === position; });
             }
         });
-=======
-            .then(function (players) { return players.filter(function (player) { return player.name.startsWith(name) && player.fantasyPosition === position; }); });
->>>>>>> d6093d095ec843b5e6da08662a257170fe8e7094
     };
     PlayersService.prototype.getHighestPosition = function (position) {
         var starters = this.roster.starter.filter(function (player) {
@@ -102,29 +83,12 @@ var PlayersService = (function () {
         var position = player.fantasyPosition;
         var status = player.bench ? this.roster.bench : this.roster.starter;
         var index = status.findIndex(function (p) {
-<<<<<<< HEAD
             return p.name === '' && (p.fantasyPosition === position || player.bench);
-=======
-            return p.name === '' && p.position === position;
->>>>>>> d6093d095ec843b5e6da08662a257170fe8e7094
         });
         status[index] = player;
     };
     PlayersService.prototype.setPosition = function (position, number) {
         this.Positions[position] = number;
-<<<<<<< HEAD
-=======
-        // var player = {
-        // 	name:'',
-        // 	fantasyPosition:position,
-        // 	fantasyPoints:0,
-        // 	team:''
-        // }
-        // this.Positions['players' + position] = [];
-        // for(var i = 0; i < number; i++) {
-        // 	this.Positions['players' + position].push(player);
-        // }
->>>>>>> d6093d095ec843b5e6da08662a257170fe8e7094
     };
     //returns position value from dropdown 
     PlayersService.prototype.getTotalPosition = function (position) {
@@ -143,10 +107,7 @@ var PlayersService = (function () {
         return this.Positions.QB +
             this.Positions.RB +
             this.Positions.WR +
-<<<<<<< HEAD
-=======
             this.Positions.TE +
->>>>>>> d6093d095ec843b5e6da08662a257170fe8e7094
             this.Positions.FLEX +
             this.Positions.DST +
             this.Positions.K +
@@ -178,7 +139,6 @@ var PlayersService = (function () {
         });
     };
     PlayersService.prototype.optimizeRoster = function () {
-<<<<<<< HEAD
         var _this = this;
         console.log(this.roster);
         this.roster.starter.forEach(function (player) {
@@ -193,9 +153,6 @@ var PlayersService = (function () {
                 _this.roster.starter.splice(index, 1, benchplayer[0]);
             }
         });
-=======
-        //code to select highest player for each position on the starter
->>>>>>> d6093d095ec843b5e6da08662a257170fe8e7094
     };
     PlayersService = __decorate([
         core_1.Injectable(), 
