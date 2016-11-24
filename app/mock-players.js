@@ -17,14 +17,14 @@ exports.PLAYERS = [
     },
     {
         name: "Tom Brady",
-        fantasyPosition: 'QB',
+        fantasyPosition: 'RB',
         fantasyPoints: 17.7,
         team: "NE",
         bench: false
     },
     {
         name: "Ben Roethlisberger",
-        fantasyPosition: 'QB',
+        fantasyPosition: 'RB',
         fantasyPoints: 14,
         team: "PIT",
         bench: false

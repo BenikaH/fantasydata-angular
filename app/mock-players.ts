@@ -7,41 +7,62 @@ export const PLAYERS: Player[] = [
   	fantasyPosition: 'QB',
   	fantasyPoints: 17.2, 
   	team: "MIA",
+<<<<<<< HEAD
     bench:false
+=======
+	  bench:false
+>>>>>>> d6093d095ec843b5e6da08662a257170fe8e7094
   },
   { 
   	name: "Aaron Rodgers", 
   	fantasyPosition: 'QB',
   	fantasyPoints: 15.6, 
   	team: "GB",
+<<<<<<< HEAD
     bench:false
+=======
+	  bench:false
+>>>>>>> d6093d095ec843b5e6da08662a257170fe8e7094
   },
   { 
   	name: "Tom Brady", 
-  	fantasyPosition: 'QB',
+  	fantasyPosition: 'RB',
   	fantasyPoints: 17.7, 
   	team: "NE",
+<<<<<<< HEAD
     bench:false
+=======
+	  bench:false
+>>>>>>> d6093d095ec843b5e6da08662a257170fe8e7094
   },
   { 
   	name: "Ben Roethlisberger", 
-  	fantasyPosition: 'QB', 
+  	fantasyPosition: 'RB',
   	fantasyPoints: 14, 
   	team: "PIT",
+<<<<<<< HEAD
     bench:false
+=======
+	  bench:false
+>>>>>>> d6093d095ec843b5e6da08662a257170fe8e7094
   },
   { 
   	name: "Russell Wilson", 
   	fantasyPosition: 'QB',
   	fantasyPoints: 9.9, 
   	team: "SEA",
+<<<<<<< HEAD
     bench:false
+=======
+	  bench:false
+>>>>>>> d6093d095ec843b5e6da08662a257170fe8e7094
   },
   { 
   	name: "Matt Ryan", 
   	fantasyPosition: 'QB', 
   	fantasyPoints: 8.4, 
   	team: "ATL",
+<<<<<<< HEAD
     bench:false
   },
   { 
@@ -211,5 +232,8 @@ export const PLAYERS: Player[] = [
     fantasyPoints: 8.4, 
     team: "ATL",
     bench:false
+=======
+	  bench:false
+>>>>>>> d6093d095ec843b5e6da08662a257170fe8e7094
   }
 ];

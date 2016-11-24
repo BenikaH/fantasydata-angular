@@ -28,6 +28,7 @@ var OptimizedComponent = (function () {
         this.PlayersService.getPlayers()
             .then(function (players) { return _this.players = players; });
         this.highestQB = this.PlayersService.getHighestPosition('QB');
+<<<<<<< HEAD
         this.topQBPts = Math.round(this.highestQB.fantasyPoints * 10) / 10;
         console.log(this.topQBPts);
         this.highestRB = this.PlayersService.getHighestPosition('RB');
@@ -43,6 +44,21 @@ var OptimizedComponent = (function () {
         this.total = this.topQBPts + this.topRBPts + this.topWRPts + this.topTEPts + this.topKPts + this.topDSTPts;
         console.log(this.total);
         this.PlayersService.optimizeRoster();
+=======
+        this.topQBPts = parseInt(this.highestQB.fantasyPoints);
+        this.highestRB = this.PlayersService.getHighestPosition('RB');
+        this.topRBPts = parseInt(this.highestRB.fantasyPoints);
+        this.highestWR = this.PlayersService.getHighestPosition('WR');
+        this.topWRPts = parseInt(this.highestWR.fantasyPoints);
+        this.highestTE = this.PlayersService.getHighestPosition('TE');
+        this.topTEPts = parseInt(this.highestTE.fantasyPoints);
+        this.highestK = this.PlayersService.getHighestPosition('K');
+        this.topKPts = parseInt(this.highestK.fantasyPoints);
+        this.highestDST = this.PlayersService.getHighestPosition('DST');
+        this.topDSTPts = parseInt(this.highestDST.fantasyPoints);
+        this.total = this.topQBPts + this.topRBPts + this.topWRPts + this.topTEPts + this.topKPts + this.topDSTPts;
+        console.log(this.total);
+>>>>>>> d6093d095ec843b5e6da08662a257170fe8e7094
         this.roster = this.PlayersService.getRoster();
     };
     OptimizedComponent.prototype.goBack = function () {
