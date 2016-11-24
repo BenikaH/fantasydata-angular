@@ -2,12 +2,28 @@ import { Player } from './player';
 import { PLAYERS } from './mock-players';
 
 import { Injectable } from '@angular/core';
+import {Http} from "@angular/http";
 
 @Injectable()
 export class PlayersService {
+
+
+	constructor(private http: Http){
+
+	}
+
+
 	getPlayers(): Promise<Player[]> {
 		return Promise.resolve(PLAYERS);
-	} 
+		// return this.http.get('YOUR URL')
+		// 	.toPromise()
+		// 	.then(response => response.json().data as Player[])
+		// 	.catch(this.handleError);
+	}
+
+	handleError(err){
+		console.log(err);
+	}
 
 	getPlayersSlowly(): Promise<Player[]> {
 		return new Promise<Player[]>(resolve => 
@@ -20,11 +36,18 @@ export class PlayersService {
 			.then(players => players.find(player => player.name === name));
 	}
 
-	searchPlayers(name:string, position:string): Promise<Player[]> {
+	searchPlayers(name:string, position:string, bench:boolean): Promise<Player[]> {
 		return this.getPlayers()
-			.then(players => players.filter(
-				player => player.name.startsWith(name) && player.fantasyPosition === position
-			));
+			.then(players => {
+				if(bench){
+					return players;
+				}else {
+					return players.filter(
+						player => player.name.startsWith(name)
+						 && player.fantasyPosition === position
+					)
+				}
+			});
 	}
 
 	getHighestPosition(position){
@@ -66,7 +89,7 @@ export class PlayersService {
 		let position = player.fantasyPosition;
 		let status = player.bench?this.roster.bench:this.roster.starter;
 		let index = status.findIndex(function(p){
-			return p.name === '' && p.position === position;
+			return p.name === '' && (p.fantasyPosition === position || player.bench);
 		});
 		status[index] = player;
 	}
@@ -139,5 +162,20 @@ export class PlayersService {
 
 	optimizeRoster(){
 		//code to select highest player for each position on the starter
+		console.log(this.roster);
+		this.roster.starter.forEach(
+			(player, idx) => {
+				let index = this.roster.bench.findIndex( (p) => {
+					return p.fantasyPoints > player.fantasyPoints
+						&& p.fantasyPosition == player.fantasyPosition;
+				});
+				if(index > -1){
+					player.bench = true;
+					let benchplayer = this.roster.bench.splice(index, 1, player);
+					benchplayer[0].bench = false;
+					this.roster.starter.splice(idx, 1, benchplayer[0]);
+				}
+			}
+		);
 	}
 }

@@ -10,8 +10,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var mock_players_1 = require('./mock-players');
 var core_1 = require('@angular/core');
+var http_1 = require("@angular/http");
 var PlayersService = (function () {
-    function PlayersService() {
+    function PlayersService(http) {
+        this.http = http;
         this.Positions = {
             "QB": 1,
             "RB": 1,
@@ -29,6 +31,13 @@ var PlayersService = (function () {
     }
     PlayersService.prototype.getPlayers = function () {
         return Promise.resolve(mock_players_1.PLAYERS);
+        // return this.http.get('YOUR URL')
+        // 	.toPromise()
+        // 	.then(response => response.json().data as Player[])
+        // 	.catch(this.handleError);
+    };
+    PlayersService.prototype.handleError = function (err) {
+        console.log(err);
     };
     PlayersService.prototype.getPlayersSlowly = function () {
         var _this = this;
@@ -41,9 +50,17 @@ var PlayersService = (function () {
         return this.getPlayers()
             .then(function (players) { return players.find(function (player) { return player.name === name; }); });
     };
-    PlayersService.prototype.searchPlayers = function (name, position) {
+    PlayersService.prototype.searchPlayers = function (name, position, bench) {
         return this.getPlayers()
-            .then(function (players) { return players.filter(function (player) { return player.name.startsWith(name) && player.fantasyPosition === position; }); });
+            .then(function (players) {
+            if (bench) {
+                return players;
+            }
+            else {
+                return players.filter(function (player) { return player.name.startsWith(name)
+                    && player.fantasyPosition === position; });
+            }
+        });
     };
     PlayersService.prototype.getHighestPosition = function (position) {
         var starters = this.roster.starter.filter(function (player) {
@@ -65,7 +82,7 @@ var PlayersService = (function () {
         var position = player.fantasyPosition;
         var status = player.bench ? this.roster.bench : this.roster.starter;
         var index = status.findIndex(function (p) {
-            return p.name === '' && p.position === position;
+            return p.name === '' && (p.fantasyPosition === position || player.bench);
         });
         status[index] = player;
     };
@@ -131,11 +148,25 @@ var PlayersService = (function () {
         });
     };
     PlayersService.prototype.optimizeRoster = function () {
+        var _this = this;
         //code to select highest player for each position on the starter
+        console.log(this.roster);
+        this.roster.starter.forEach(function (player, idx) {
+            var index = _this.roster.bench.findIndex(function (p) {
+                return p.fantasyPoints > player.fantasyPoints
+                    && p.fantasyPosition == player.fantasyPosition;
+            });
+            if (index > -1) {
+                player.bench = true;
+                var benchplayer = _this.roster.bench.splice(index, 1, player);
+                benchplayer[0].bench = false;
+                _this.roster.starter.splice(idx, 1, benchplayer[0]);
+            }
+        });
     };
     PlayersService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_1.Http])
     ], PlayersService);
     return PlayersService;
 }());

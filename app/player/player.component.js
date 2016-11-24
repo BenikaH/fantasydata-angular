@@ -20,13 +20,14 @@ var PlayerComponent = (function () {
     };
     PlayerComponent.prototype.searchPlayer = function () {
         var _this = this;
-        this.PlayersService.searchPlayers(this.playerName, this.position)
+        this.PlayersService.searchPlayers(this.playerName, this.position, this.position === 'BN')
             .then(function (players) { return _this.players = players; });
         console.log(this.players);
     };
     PlayerComponent.prototype.select = function (p) {
         this.players = [];
         this.playerName = p.name;
+        p.bench = this.position === 'BN';
         this.player.emit(p);
     };
     __decorate([

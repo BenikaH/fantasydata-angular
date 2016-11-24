@@ -68,6 +68,7 @@ export class OptimizedComponent implements OnInit {
     this.total = this.topQBPts + this.topRBPts + this.topWRPts + this.topTEPts + this.topKPts + this.topDSTPts;
     console.log(this.total);
 
+    this.PlayersService.optimizeRoster();
     this.roster = this.PlayersService.getRoster();
 
   }

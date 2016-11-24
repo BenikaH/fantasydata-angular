@@ -41,6 +41,7 @@ var OptimizedComponent = (function () {
         this.topDSTPts = parseInt(this.highestDST.fantasyPoints);
         this.total = this.topQBPts + this.topRBPts + this.topWRPts + this.topTEPts + this.topKPts + this.topDSTPts;
         console.log(this.total);
+        this.PlayersService.optimizeRoster();
         this.roster = this.PlayersService.getRoster();
     };
     OptimizedComponent.prototype.goBack = function () {
