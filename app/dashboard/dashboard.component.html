@@ -1,75 +1,77 @@
 <form class="dashboard-form">
-	<div class="db-row">
+	<div class="position-block">
+		<div class="db-row">
+				<span class="break">
+					<span class="pos">QB</span>
+					<div class="styled-select blue semi-square">
+						<select #QB (change)="onChange($event, 'QB', QB.value)">
+							<option>1</option><option>2</option>
+						</select>
+					</div>	
+				</span>
+				<span class="break">
+					<span class="pos">RB</span>
+					<div class="styled-select blue semi-square">
+						<select #RB (change)="onChange($event, 'RB', RB.value)">
+							<option>1</option><option>2</option><option>3</option>
+						</select>
+					</div>
+				</span>
+		</div>
+		<div class="db-row">
 			<span class="break">
-				<span class="pos">QB</span>
+				<span class="pos">WR</span>
 				<div class="styled-select blue semi-square">
-					<select #QB (change)="onChange($event, 'QB', QB.value)">
+					<select #WR (change)="onChange($event, 'WR', WR.value)">
+						<option>1</option><option>2</option><option>3</option><option>4</option>
+					</select>
+				</div>	
+			</span>
+			<span class="break">
+				<span class="pos">TE</span>
+				<div class="styled-select blue semi-square">
+					<select #TE (change)="onChange($event, 'TE', RB.value)">
+						<option>1</option><option>2</option>
+					</select>
+				</div>
+			</span>
+		</div>
+		<div class="db-row">
+			<span class="break">
+				<span class="pos">FLEX</span>
+				<div class="styled-select blue semi-square">
+					<select #FLEX (change)="onChange($event, 'FLEX', FLEX.value)">
 						<option>1</option><option>2</option>
 					</select>
 				</div>	
 			</span>
 			<span class="break">
-				<span class="pos">RB</span>
+				<span class="pos">DST</span>
 				<div class="styled-select blue semi-square">
-					<select #RB (change)="onChange($event, 'RB', RB.value)">
-						<option>1</option><option>2</option><option>3</option>
+					<select #DST (change)="onChange($event, 'DST', DST.value)">
+						<option>1</option>
 					</select>
 				</div>
 			</span>
-	</div>
-	<div class="db-row">
-		<span class="break">
-			<span class="pos">WR</span>
-			<div class="styled-select blue semi-square">
-				<select #WR (change)="onChange($event, 'WR', WR.value)">
-					<option>1</option><option>2</option><option>3</option><option>4</option>
-				</select>
-			</div>	
-		</span>
-		<span class="break">
-			<span class="pos">TE</span>
-			<div class="styled-select blue semi-square">
-				<select #TE (change)="onChange($event, 'TE', RB.value)">
-					<option>1</option><option>2</option>
-				</select>
-			</div>
-		</span>
-	</div>
-	<div class="db-row">
-		<span class="break">
-			<span class="pos">FLEX</span>
-			<div class="styled-select blue semi-square">
-				<select #FLEX (change)="onChange($event, 'FLEX', FLEX.value)">
-					<option>1</option><option>2</option>
-				</select>
-			</div>	
-		</span>
-		<span class="break">
-			<span class="pos">DST</span>
-			<div class="styled-select blue semi-square">
-				<select #DST (change)="onChange($event, 'DST', DST.value)">
-					<option>1</option>
-				</select>
-			</div>
-		</span>
-	</div>
-	<div class="db-row">
-		<span class="break">
-			<span class="pos">K</span>
-			<div class="styled-select blue semi-square">
-				<select #K (change)="onChange($event, 'K', K.value)">
-					<option>1</option>
-				</select>
-			</div>	
-		</span>
-		<span class="break">
-			<span class="pos">BN</span>
-			<div class="styled-select blue semi-square">
-				<select #BN (change)="onChange($event, 'BN', BN.value)">
-					<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option>
-				</select>
-			</div>
-		</span>
+		</div>
+		<div class="db-row">
+			<span class="break">
+				<span class="pos">K</span>
+				<div class="styled-select blue semi-square">
+					<select #K (change)="onChange($event, 'K', K.value)">
+						<option>1</option>
+					</select>
+				</div>	
+			</span>
+			<span class="break">
+				<span class="pos">BN</span>
+				<div class="styled-select blue semi-square">
+					<select #BN (change)="onChange($event, 'BN', BN.value)">
+						<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option>
+					</select>
+				</div>
+			</span>
+		</div>
 	</div>
 
 	<div class="btn-container">

@@ -9,9 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var mock_players_1 = require('./mock-players');
+require("rxjs/add/operator/toPromise");
 var core_1 = require('@angular/core');
+var http_1 = require("@angular/http");
 var PlayersService = (function () {
-    function PlayersService() {
+    function PlayersService(http) {
+        this.http = http;
         this.Positions = {
             "QB": 1,
             "RB": 1,
@@ -29,7 +32,13 @@ var PlayersService = (function () {
     }
     PlayersService.prototype.getPlayers = function () {
         return Promise.resolve(mock_players_1.PLAYERS);
-        // return from server
+        /*		return this.http.get("https://mysterious-falls-52077.herokuapp.com/profile")
+                    .toPromise()
+                    .then(response => response.json().data as Player[])
+                    .catch(this.handleError);*/
+    };
+    PlayersService.prototype.handleError = function (err) {
+        console.log(err);
     };
     PlayersService.prototype.getPlayersSlowly = function () {
         var _this = this;
@@ -130,7 +139,6 @@ var PlayersService = (function () {
     };
     PlayersService.prototype.optimizeRoster = function () {
         var _this = this;
-        // code to select highest player for each position on the starter
         console.log(this.roster);
         this.roster.starter.forEach(function (player) {
             var index = _this.roster.bench.findIndex(function (p) {
@@ -147,7 +155,7 @@ var PlayersService = (function () {
     };
     PlayersService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_1.Http])
     ], PlayersService);
     return PlayersService;
 }());

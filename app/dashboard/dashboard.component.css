@@ -5,6 +5,9 @@
         width:100%;
         text-align: center;
     }
+    .position-block {
+        padding-right:5.5em;
+    }
     /*============= Styling for dropdown ============*/
     .styled-select {
        background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;

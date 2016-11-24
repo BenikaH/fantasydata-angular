@@ -47,22 +47,23 @@ export class OptimizedComponent implements OnInit {
       .then(players => this.players = players);
 
     this.highestQB = this.PlayersService.getHighestPosition('QB');
-    this.topQBPts = parseInt(this.highestQB.fantasyPoints);
+    this.topQBPts = Math.round(this.highestQB.fantasyPoints * 10) / 10;
+    console.log(this.topQBPts);
 
     this.highestRB = this.PlayersService.getHighestPosition('RB');
-    this.topRBPts = parseInt(this.highestRB.fantasyPoints);
+    this.topRBPts = Math.round(this.highestRB.fantasyPoints * 10) / 10;
 
     this.highestWR = this.PlayersService.getHighestPosition('WR');
-    this.topWRPts = parseInt(this.highestWR.fantasyPoints);
+    this.topWRPts = Math.round(this.highestWR.fantasyPoints * 10) / 10;
 
     this.highestTE = this.PlayersService.getHighestPosition('TE');
-    this.topTEPts = parseInt(this.highestTE.fantasyPoints);
+    this.topTEPts = Math.round(this.highestTE.fantasyPoints * 10) / 10;
 
     this.highestK = this.PlayersService.getHighestPosition('K');
-    this.topKPts = parseInt(this.highestK.fantasyPoints);
+    this.topKPts = Math.round(this.highestK.fantasyPoints * 10) / 10;
 
     this.highestDST = this.PlayersService.getHighestPosition('DST');
-    this.topDSTPts = parseInt(this.highestDST.fantasyPoints);
+    this.topDSTPts = Math.round(this.highestDST.fantasyPoints * 10) / 10;
 
     this.total = this.topQBPts + this.topRBPts + this.topWRPts + this.topTEPts + this.topKPts + this.topDSTPts;
     console.log(this.total);

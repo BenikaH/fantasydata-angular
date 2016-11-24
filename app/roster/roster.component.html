@@ -1,11 +1,15 @@
 <div class="lineup">
-    <h2>Starter</h2>
+    <div class="header bold">
+        <h2>Starter</h2>
+    </div>
     <player 
         *ngFor="let player of roster.starter; let i = index"
         [position]="player.fantasyPosition"
         [playerName]="player.name"
         (player)="setPlayer($event)"></player>
-    <h2>Bench</h2>
+    <div class="header bold">
+        <h2>Bench</h2>
+    </div>
     <player 
         *ngFor="let player of roster.bench; let i = index"
         [position]="player.fantasyPosition"

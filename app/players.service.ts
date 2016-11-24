@@ -1,14 +1,27 @@
 import { Player } from './player';
 import { PLAYERS } from './mock-players';
+import "rxjs/add/operator/toPromise";
 
 import { Injectable } from '@angular/core';
+import { Http }		from "@angular/http";
 
 @Injectable()
 export class PlayersService {
+
+	constructor(private http: Http) {
+	}
+
 	getPlayers(): Promise<Player[]> {
 		return Promise.resolve(PLAYERS);
-		// return from server
+/*		return this.http.get("https://mysterious-falls-52077.herokuapp.com/profile")
+			.toPromise()
+			.then(response => response.json().data as Player[])
+			.catch(this.handleError);*/
 	} 
+
+	handleError(err) {
+		console.log(err);
+	}
 
 	getPlayersSlowly(): Promise<Player[]> {
 		return new Promise<Player[]>(resolve => 
@@ -132,7 +145,6 @@ export class PlayersService {
 	}
 
 	optimizeRoster() {
-		// code to select highest player for each position on the starter
 		console.log(this.roster);
 		this.roster.starter.forEach(
 			(player) => {

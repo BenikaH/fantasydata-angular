@@ -1,7 +1,15 @@
     body {
         margin:0;
     }
-
+    .bold {
+        font-weight:bolder;
+        font-size:1.35em;
+        color:#F8F8FF;
+        background-color:#3b8ec2;
+    }
+    .bold h2 {
+        margin-left:0.7em;
+    }
     #container {
         height:47em;
         width:100%;
@@ -77,7 +85,6 @@
         font-size: 1.1em;
     }
     .btn-container {
-        border:none!important;
         display:flex;
         justify-content:center;
         align-items:center;
