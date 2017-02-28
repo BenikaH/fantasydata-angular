@@ -5,15 +5,15 @@
    </div>
 
    <div class="row" *ngFor="let player of roster.starter">
-   	<span>{{player.fantasyPosition}}</span>
+   	<span>{{player.FantasyPosition}}</span>
      	<div class="profile">{{player.name + ", " + player.team}}</div>
-      <div class="fpts">{{player.fantasyPoints}}</div>
+      <div class="fpts">{{player.FantasyPoints}}</div>
    </div>
 
    <div class="row" *ngFor="let player of roster.bench">
-    <span>{{player.fantasyPosition}} (Bench)</span>
+    <span>{{player.FantasyPosition}} (Bench)</span>
       <div class="profile">{{player.name + ", " + player.team}}</div>
-      <div class="fpts">{{player.fantasyPoints}}</div>
+      <div class="fpts">{{player.FantasyPoints}}</div>
    </div>
 
    <div class="header bold">

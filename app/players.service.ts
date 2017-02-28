@@ -15,11 +15,13 @@ export class PlayersService {
 
 
 	getPlayers(): Promise<Player[]> {
-		return Promise.resolve(PLAYERS);
-		// return this.http.get('YOUR URL')
-		// 	.toPromise()
-		// 	.then(response => response.json().data as Player[])
-		// 	.catch(this.handleError);
+		//return Promise.resolve(PLAYERS);
+		return this.http.get('https://mysterious-falls-52077.herokuapp.com/profile')
+			.toPromise()
+			.then(response => 
+				response.json().body as Player[]
+			})
+			.catch(this.handleError);
 	}
 
 	handleError(err) {
@@ -44,8 +46,10 @@ export class PlayersService {
 					return players;
 				}else {
 					return players.filter(
-						player => player.name.startsWith(name)
+							player => {
+						return player => player.Name.startsWith(name)
 						 && player.fantasyPosition === position
+						}
 					)
 				}
 			});
@@ -91,7 +95,9 @@ export class PlayersService {
 		let index = status.findIndex(function(p){
 			return p.name === '' && (p.fantasyPosition === position || player.bench);
 		});
-		status[index] = player;
+		if(index > -1) {
+			status[index] = player;
+		}
 	}
 
 	setPosition(position:string, number) {
@@ -151,9 +157,8 @@ export class PlayersService {
 	}
 
 	optimizeRoster() {
-		console.log(this.roster);
 		this.roster.starter.forEach(
-			(player) => {
+			(player, idx) => {
 				let index = this.roster.bench.findIndex( (p) => {
 					return p.fantasyPoints > player.fantasyPoints 
 					&& p.fantasyPosition == player.fantasyPosition; 
@@ -162,7 +167,7 @@ export class PlayersService {
 					player.bench = true;
 					let benchplayer = this.roster.bench.splice(index, 1, player);
 					benchplayer[0].bench = false; 
-					this.roster.starter.splice(index, 1, benchplayer[0]);
+					this.roster.starter.splice(idx, 1, benchplayer[0]);
 				}
 			}
 		);
