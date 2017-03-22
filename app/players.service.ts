@@ -3,25 +3,20 @@ import { PLAYERS } from './mock-players';
 import "rxjs/add/operator/toPromise";
 
 import { Injectable } from '@angular/core';
-import {Http} from "@angular/http";
-
+import { Http }		from "@angular/http";
 
 @Injectable()
 export class PlayersService {
 
-	constructor(private http: Http){
-
+	constructor(private http: Http) {
 	}
 
-
 	getPlayers(): Promise<Player[]> {
-		//return Promise.resolve(PLAYERS);
-		return this.http.get('https://mysterious-falls-52077.herokuapp.com/profile')
-			.toPromise()
-			.then(response => 
-				response.json().body as Player[]
-			})
-			.catch(this.handleError);
+		return Promise.resolve(PLAYERS);
+		/*		return this.http.get("https://mysterious-falls-52077.herokuapp.com/profile")
+		 .toPromise()
+		 .then(response => response.json().data as Player[])
+		 .catch(this.handleError);*/
 	}
 
 	handleError(err) {
@@ -29,27 +24,25 @@ export class PlayersService {
 	}
 
 	getPlayersSlowly(): Promise<Player[]> {
-		return new Promise<Player[]>(resolve => 
+		return new Promise<Player[]>(resolve =>
 			setTimeout(resolve, 2000)) // delay 2 secs
-			.then(() => this.getPlayers());
+            .then(() => this.getPlayers());
 	}
 
 	getPlayer(name:string): Promise<Player> {
 		return this.getPlayers()
-			.then(players => players.find(player => player.name === name));
+            .then(players => players.find(player => player.Name === name));
 	}
 
 	searchPlayers(name:string, position:string, bench:boolean): Promise<Player[]> {
 		return this.getPlayers()
-			.then(players => {
-				if(bench){
+            .then(players => {
+				if (bench) {
 					return players;
-				}else {
+				} else {
 					return players.filter(
-							player => {
-						return player => player.Name.startsWith(name)
-						 && player.fantasyPosition === position
-						}
+						player => player.Name.startsWith(name)
+						&& player.FantasyPosition === position
 					)
 				}
 			});
@@ -72,7 +65,6 @@ export class PlayersService {
 		});
 	}
 
-
 	Positions = {
 		"QB":1,
 		"RB":1,
@@ -84,10 +76,10 @@ export class PlayersService {
 		"BN":1
 	}
 
-	roster = { //actual players on the team
+	roster = {
 		starter:[],
 		bench:[]
-	};
+	}; //actual players on team
 
 	setPlayer(player) {
 		let position = player.fantasyPosition;
@@ -95,16 +87,14 @@ export class PlayersService {
 		let index = status.findIndex(function(p){
 			return p.name === '' && (p.fantasyPosition === position || player.bench);
 		});
-		if(index > -1) {
-			status[index] = player;
-		}
+		status[index] = player;
 	}
 
 	setPosition(position:string, number) {
 		this.Positions[position] = number;
 	}
 
-	//returns position value from dropdown 
+	//returns position value from dropdown
 	getTotalPosition(position) {
 		return this.Positions[position];
 	}
@@ -113,8 +103,9 @@ export class PlayersService {
 		return this.Positions;
 	}
 
-	getRoster() {
-		if(this.roster.starter.length == 0) {
+
+	getRoster(){
+		if(this.roster.starter.length == 0){
 			this.createRoster();
 		}
 		return this.roster;
@@ -142,7 +133,7 @@ export class PlayersService {
 						fantasyPoints: 0,
 						team: '',
 						bench:true
-					});					
+					});
 				} else {
 					this.roster.starter.push({
 						name:'',
@@ -152,25 +143,25 @@ export class PlayersService {
 						bench:false
 					})
 				}
-			}			
+			}
 		});
 	}
 
 	optimizeRoster() {
+		console.log(this.roster);
 		this.roster.starter.forEach(
-			(player, idx) => {
+			(player) => {
 				let index = this.roster.bench.findIndex( (p) => {
-					return p.fantasyPoints > player.fantasyPoints 
-					&& p.fantasyPosition == player.fantasyPosition; 
+					return p.fantasyPoints > player.fantasyPoints
+						&& p.fantasyPosition == player.fantasyPosition;
 				});
 				if(index > -1) {
 					player.bench = true;
 					let benchplayer = this.roster.bench.splice(index, 1, player);
-					benchplayer[0].bench = false; 
-					this.roster.starter.splice(idx, 1, benchplayer[0]);
+					benchplayer[0].bench = false;
+					this.roster.starter.splice(index, 1, benchplayer[0]);
 				}
 			}
 		);
 	}
 }
-

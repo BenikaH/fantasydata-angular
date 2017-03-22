@@ -31,7 +31,6 @@ export class OptimizedComponent implements OnInit {
   topDSTPts;
   total;
 
-
   constructor(
     private PlayersService: PlayersService,
     private route: ActivatedRoute,
@@ -48,7 +47,6 @@ export class OptimizedComponent implements OnInit {
       .then(players => this.players = players);
 
     this.highestQB = this.PlayersService.getHighestPosition('QB');
-
     this.topQBPts = parseInt(this.highestQB.FantasyPoints);
 
     this.highestRB = this.PlayersService.getHighestPosition('RB');

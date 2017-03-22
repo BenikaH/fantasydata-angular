@@ -2,7 +2,7 @@ import { Player } from './player';
 //import { Position } from './player';
 
 export const PLAYERS: Player[] = [
-  { 
+  {
   	Name: "Ryan Tannehill", 
   	FantasyPosition: 'QB',
   	FantasyPoints: 17.2, 
