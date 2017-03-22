@@ -19,7 +19,7 @@ export class PlayersService {
 		return this.http.get('https://mysterious-falls-52077.herokuapp.com/profile')
 			.toPromise()
 			.then(response => 
-				response.json().body as Player[]
+				response.json().body
 			})
 			.catch(this.handleError);
 	}
