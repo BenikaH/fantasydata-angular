@@ -1,7 +1,7 @@
 "use strict";
 var Player = (function () {
     function Player(position) {
-        this.fantasyPosition = position;
+        this.FantasyPosition = position;
     }
     return Player;
 }());

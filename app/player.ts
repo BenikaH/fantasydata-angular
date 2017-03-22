@@ -1,11 +1,11 @@
 export class Player {
-	name: string;
-	fantasyPosition: string;
-	fantasyPoints: number;
-	team: string;
+	Name: string;
+	FantasyPosition: string;
+	FantasyPoints: number;
+	Team: string;
 	bench:boolean
 
 	constructor(position){
-		this.fantasyPosition = position;
+		this.FantasyPosition = position;
 	}
 }

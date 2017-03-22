@@ -4,16 +4,16 @@
     </div>
     <player 
         *ngFor="let player of roster.starter; let i = index"
-        [position]="player.fantasyPosition"
-        [playerName]="player.name"
+        [position]="player.FantasyPosition"
+        [playerName]="player.Name"
         (player)="setPlayer($event)"></player>
     <div class="header bold">
         <h2>Bench</h2>
     </div>
     <player 
         *ngFor="let player of roster.bench; let i = index"
-        [position]="player.fantasyPosition"
-        [playerName]="player.name"
+        [position]="player.FantasyPosition"
+        [playerName]="player.Name"
         (player)="setPlayer($event)"></player>  
 
     <div class="btn-container">
